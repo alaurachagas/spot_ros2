@@ -1,0 +1,54 @@
+ARG ROS_DISTRO=humble
+FROM ros:${ROS_DISTRO} AS base
+
+# config dependencies install
+ARG DEBIAN_FRONTEND=noninteractive
+RUN rm /bin/sh && ln -s /bin/bash /bin/sh && apt-get update && apt-get install -y apt-utils && ./ros_entrypoint.sh
+
+#install binary dependencies
+RUN apt-get -qq update && apt-get -qq upgrade -y && apt-get install -y \
+    apt-utils \
+    autoconf \
+    automake \
+    libtool \
+    curl \
+    make \
+    g++ \
+    wget \
+    unzip \
+    maven \
+    software-properties-common \
+    python3-colcon-common-extensions \
+    python3-rosdep \
+    ros-${ROS_DISTRO}-angles \
+    ros-${ROS_DISTRO}-diagnostic-updater \
+    libpcl-dev \
+    libpcap0.8-dev \
+    ros-${ROS_DISTRO}-rmw-zenoh-cpp 
+# Clear apt-cache to reduce image size
+RUN rm -rf /var/lib/apt/lists/*
+
+FROM base as builder
+
+# Copy base_ws to docker image
+COPY colcon_ws/src/velodyne/ /colcon_velodyne/src/velodyne/
+
+# Install module dependencies of base_ws
+WORKDIR /colcon_velodyne
+RUN source /opt/ros/${ROS_DISTRO}/setup.bash
+RUN rosdep update
+RUN rosdep install --from-paths src --ignore-src --rosdistro ${ROS_DISTRO} -y -r
+
+# Source and build base_ws
+RUN source /opt/ros/humble/setup.bash && colcon build --cmake-args -DCMAKE_BUILD_TYPE=Release --symlink-install
+
+WORKDIR /
+
+RUN echo "source source /opt/ros/humble/setup.bash" >> ~/.bashrc
+RUN echo "source /colcon_velodyne/install/setup.bash" >> ~/.bashrc
+RUN echo "export RMW_IMPLEMENTATION=rmw_zenoh_cpp" >> ~/.bashrc
+RUN echo "export ROS_DOMAIN_ID=22" >> ~/.bashrc
+
+# Copy entrypoint scripts and make executable
+COPY entrypoint_scripts/ /entrypoint_scripts
+RUN chmod +x /entrypoint_scripts/*.sh
