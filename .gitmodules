@@ -1,0 +1,6 @@
+[submodule "colcon_ws/src/cartographer_spot"]
+	path = colcon_ws/src/cartographer_spot
+	url = https://github.com/alaurachagas/cartographer_spot.git
+[submodule "colcon_ws/src/velodyne"]
+	path = colcon_ws/src/velodyne
+	url = https://github.com/ros-drivers/velodyne.git
