@@ -1,0 +1,41 @@
+FROM osrf/ros:humble-desktop
+
+RUN rm /bin/sh && ln -s /bin/bash /bin/sh
+
+# Install utilities and dependencies
+RUN apt-get update && apt-get install -y \
+    curl \
+    gnupg2 \
+    lsb-release \
+    && rm -rf /var/lib/apt/lists/*
+
+# Install Cartographer and ROS2 Zenoh middleware packages
+RUN apt-get update && apt-get install -y \
+    ros-humble-cartographer \
+    ros-humble-cartographer-ros \
+    ros-humble-cartographer-ros-msgs \
+    ros-humble-rmw-zenoh-cpp \
+    && rm -rf /var/lib/apt/lists/*
+
+# Copy colcon_ws
+COPY colcon_ws/src/cartographer_spot /colcon_ws/src/cartographer_spot
+
+WORKDIR /colcon_ws/
+
+RUN rosdep update && \
+    rosdep install --from-paths src --ignore-src -r -y
+
+# Source and build colcon_ws
+RUN source /opt/ros/humble/setup.bash && colcon build --symlink-install
+
+# Source ROS2 and colcon_ws
+RUN echo "source /opt/ros/humble/setup.bash" >> ~/.bashrc && \
+    echo "source /colcon_ws/install/setup.bash" >> ~/.bashrc
+
+# Set environment variables
+RUN echo "export RMW_IMPLEMENTATION=rmw_zenoh_cpp" >> ~/.bashrc && \
+    echo "export ROS_DOMAIN_ID=22" >> ~/.bashrc
+
+# Set the default command
+CMD ["bash"]
+
