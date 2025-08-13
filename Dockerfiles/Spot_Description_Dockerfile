@@ -1,0 +1,32 @@
+# Choose your distro: humble/iron/jazzy (example uses humble)
+ARG ROS_DISTRO=humble
+FROM ros:${ROS_DISTRO}-ros-core
+
+# Minimal build tooling for an ament_cmake package
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    ros-${ROS_DISTRO}-ament-cmake \
+    python3-colcon-common-extensions \
+    build-essential \
+    ros-${ROS_DISTRO}-xacro \
+ && rm -rf /var/lib/apt/lists/*
+
+SHELL ["/bin/bash", "-c"]
+
+# Add your package
+COPY colcon_ws/src/spot_description/ /colcon_ws/src/spot_description/
+
+# Change URDF file
+COPY files_to_change/spot.urdf.xacro /colcon_ws/src/spot_description/urdf/spot.urdf.xacro
+
+WORKDIR /colcon_ws
+
+# Build & install so the package is indexed (ament resource + share/ files)
+RUN source /opt/ros/${ROS_DISTRO}/setup.bash && \
+    colcon build --symlink-install
+
+# Make the environment available by default
+RUN echo "source /opt/ros/${ROS_DISTRO}/setup.bash" >> /root/.bashrc && \
+    echo "source /colcon_ws/install/setup.bash" >> /root/.bashrc
+
+# Default shell; consumers will `docker run ...` and source or mount as needed
+CMD ["bash"]

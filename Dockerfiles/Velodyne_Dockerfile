@@ -32,6 +32,7 @@ FROM base as builder
 
 # Copy base_ws to docker image
 COPY colcon_ws/src/velodyne/ /colcon_velodyne/src/velodyne/
+COPY colcon_ws/src/velodyne_description/ /colcon_velodyne/src/velodyne_description/
 
 # Install module dependencies of base_ws
 WORKDIR /colcon_velodyne
