@@ -11,4 +11,4 @@ docker run \
     --env="DISPLAY" \
     -v "$HOME/.Xauthority:/root/.Xauthority:rw" \
     --name spot_description \
-    spot_description-ros:main
+    spot-description-ros:main

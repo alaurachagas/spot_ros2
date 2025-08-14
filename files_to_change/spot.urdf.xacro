@@ -5,7 +5,7 @@
   <xacro:include filename="$(find spot_description)/urdf/spot_macro.xacro" />
   <!-- Macros for loading the ROS 2 control tags -->
   <xacro:include filename="$(find spot_description)/urdf/spot.ros2_control.xacro" />
-    <!-- Include Velodyne VLP-16 URDF macro -->
+  <!-- Include Velodyne VLP-16 URDF macro -->
   <xacro:include filename="$(find velodyne_description)/urdf/VLP-16.urdf.xacro"/>
 
   <!-- General parameters -->
