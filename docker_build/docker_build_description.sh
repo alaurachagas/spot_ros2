@@ -3,4 +3,4 @@
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 REPO_ROOT="$(dirname "$SCRIPT_DIR")"
 
-docker build -t velodyne-ros:main -f "$REPO_ROOT/Dockerfiles/Velodyne_Dockerfile"  .
+docker build -t spot-description-ros:main -f "$REPO_ROOT/Dockerfiles/Spot_Description_Dockerfile"  .

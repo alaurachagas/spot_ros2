@@ -10,5 +10,5 @@ docker run \
     --privileged \
     --env="DISPLAY" \
     -v "$HOME/.Xauthority:/root/.Xauthority:rw" \
-    --name cartographer \
-    cartographer-ros:main
+    --name spot_description \
+    spot_description-ros:main

@@ -14,6 +14,8 @@ SHELL ["/bin/bash", "-c"]
 
 # Add your package
 COPY colcon_ws/src/spot_description/ /colcon_ws/src/spot_description/
+COPY colcon_ws/src/velodyne_description/ /colcon_ws/src/velodyne_description/
+
 
 # Change URDF file
 COPY files_to_change/spot.urdf.xacro /colcon_ws/src/spot_description/urdf/spot.urdf.xacro

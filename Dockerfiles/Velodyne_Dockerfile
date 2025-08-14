@@ -24,7 +24,9 @@ RUN apt-get -qq update && apt-get -qq upgrade -y && apt-get install -y \
     ros-${ROS_DISTRO}-diagnostic-updater \
     libpcl-dev \
     libpcap0.8-dev \
-    ros-${ROS_DISTRO}-rmw-zenoh-cpp 
+    ros-${ROS_DISTRO}-rmw-zenoh-cpp \
+    ros-${ROS_DISTRO}-xacro 
+
 # Clear apt-cache to reduce image size
 RUN rm -rf /var/lib/apt/lists/*
 
@@ -49,7 +51,3 @@ RUN echo "source source /opt/ros/humble/setup.bash" >> ~/.bashrc
 RUN echo "source /colcon_velodyne/install/setup.bash" >> ~/.bashrc
 RUN echo "export RMW_IMPLEMENTATION=rmw_zenoh_cpp" >> ~/.bashrc
 RUN echo "export ROS_DOMAIN_ID=22" >> ~/.bashrc
-
-# Copy entrypoint scripts and make executable
-COPY entrypoint_scripts/ /entrypoint_scripts
-RUN chmod +x /entrypoint_scripts/*.sh
