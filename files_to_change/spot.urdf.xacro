@@ -5,8 +5,6 @@
   <xacro:include filename="$(find spot_description)/urdf/spot_macro.xacro" />
   <!-- Macros for loading the ROS 2 control tags -->
   <xacro:include filename="$(find spot_description)/urdf/spot.ros2_control.xacro" />
-  <!-- Include Velodyne VLP-16 URDF macro -->
-  <xacro:include filename="$(find velodyne_description)/urdf/VLP-16.urdf.xacro"/>
 
   <!-- General parameters -->
 
@@ -57,17 +55,5 @@
                                k_q_p="$(arg k_q_p)"
                                k_qd_p="$(arg k_qd_p)" />
   </xacro:if>
-
-  <!-- Add Velodyne sensor to Spot -->
-  <!-- Instantiate the Velodyne macro -->
-  <xacro:vlp_16 name="velodyne_top"/>
-
-  <!-- Fixed joint to mount Velodyne on Spot's body -->
-  <joint name="velodyne_mount_joint" type="fixed">
-    <parent link="body"/> <!-- Replace 'body' with the main top frame of Spot if different -->
-    <child link="velodyne_top_base_link"/>
-    <!-- Position above the robot: 0.25m above, no rotation -->
-    <origin xyz="-0.183 0 0.1518" rpy="0 0 0"/>
-  </joint>
 
 </robot>

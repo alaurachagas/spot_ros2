@@ -409,16 +409,11 @@
             <limit effort="115" velocity="12.0" lower="-2.7929" upper="-0.257725" />
         </joint>
         
-        <!-- Add Velodyne -->
-        <xacro:vlp_16 name="velodyne_top"/>
-
-        <!-- Fixed joint to mount Velodyne on Spot's body -->
-        <joint name="${tf_prefix}velodyne_mount_joint" type="fixed">
-            <parent link="${tf_prefix}body"/> <!-- Replace 'body' with the main top frame of Spot if different -->
-            <child link="velodyne_top_base_link"/>
-            <!-- Position above the robot -->
+        <!-- Velodyne VLP-16 -->
+        <xacro:VLP-16 name="${tf_prefix}vlp16" parent="${tf_prefix}body">
+            <!-- adjust pose as needed -->
             <origin xyz="-0.183 0 0.1518" rpy="0 0 0"/>
-        </joint>
+        </xacro:VLP-16>
 
         <!-- Standard accessories. -->
         <xacro:include filename="$(find spot_description)/urdf/accessories.urdf.xacro" />
