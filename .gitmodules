@@ -4,6 +4,7 @@
 [submodule "colcon_ws/src/velodyne"]
 	path = colcon_ws/src/velodyne
 	url = https://github.com/ros-drivers/velodyne.git
+	branch = humble-devel
 [submodule "colcon_ws/src/spot_description"]
 	path = colcon_ws/src/spot_description
 	url = https://github.com/bdaiinstitute/spot_description.git

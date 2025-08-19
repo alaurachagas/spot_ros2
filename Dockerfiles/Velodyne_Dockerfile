@@ -47,7 +47,7 @@ RUN source /opt/ros/humble/setup.bash && colcon build --cmake-args -DCMAKE_BUILD
 
 WORKDIR /
 
-RUN echo "source source /opt/ros/humble/setup.bash" >> ~/.bashrc
+RUN echo "source /opt/ros/humble/setup.bash" >> ~/.bashrc
 RUN echo "source /colcon_velodyne/install/setup.bash" >> ~/.bashrc
 RUN echo "export RMW_IMPLEMENTATION=rmw_zenoh_cpp" >> ~/.bashrc
 RUN echo "export ROS_DOMAIN_ID=22" >> ~/.bashrc

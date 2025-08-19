@@ -13,12 +13,13 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 SHELL ["/bin/bash", "-c"]
 
 # Add your package
-COPY colcon_ws/src/spot_description/ /colcon_ws/src/spot_description/
+COPY colcon_ws/src/spot_description/spot_description /colcon_ws/src/spot_description/
 COPY colcon_ws/src/velodyne_description/ /colcon_ws/src/velodyne_description/
 
 
 # Change URDF file
-COPY files_to_change/spot_macro.xacro /colcon_ws/src/spot_description/urdf/spot_macro.xacro
+COPY files_to_change/spot_macro.xacro /colcon_ws/src/spot_description/spot_description/urdf/spot_macro.xacro
+
 
 WORKDIR /colcon_ws
 
