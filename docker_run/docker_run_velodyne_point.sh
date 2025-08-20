@@ -1,0 +1,1 @@
+docker exec -it velodyne bash -c "bash /velodyne_points_entry.sh; exec bash"

@@ -11,4 +11,5 @@ docker run \
     --env="DISPLAY" \
     -v "$HOME/.Xauthority:/root/.Xauthority:rw" \
     --name spot_driver \
-    spot-ros_ana_test:main
+    spot-ros_ana:main \
+    bash -c "bash /spot_driver_entry.sh; exec bash"

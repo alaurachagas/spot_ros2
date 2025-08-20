@@ -83,6 +83,8 @@ WORKDIR /velodyne_ws/
 RUN . /opt/ros/humble/setup.sh && . /ros_ws/install/setup.sh && \
     colcon build --symlink-install
 
+COPY entrypoint_scripts/spot_driver_entry.sh /spot_driver_entry.sh
+RUN chmod +x /spot_driver_entry.sh
 
 # Source the workspace
 RUN echo "source /opt/ros/humble/setup.bash" >> ~/.bashrc

@@ -11,4 +11,5 @@ docker run \
     --env="DISPLAY" \
     -v "$HOME/.Xauthority:/root/.Xauthority:rw" \
     --name spot_description \
-    spot-description-ros:main
+    spot-description-ros:main \
+    bash -c "bash /description_entry.sh; exec bash"

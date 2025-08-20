@@ -12,6 +12,5 @@ docker run \
     -v "$HOME/.Xauthority:/root/.Xauthority:rw" \
     --name velodyne \
     velodyne-ros:main \
-    #ros2 run velodyne_driver velodyne_driver_node \
-    #--ros-args -p device_ip:=192.168.0.185 -p frame_id:=VLP-16_base_link
+    bash -c "bash /velodyne_node_entry.sh; exec bash"
 

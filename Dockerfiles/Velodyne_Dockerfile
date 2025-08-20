@@ -17,7 +17,6 @@ RUN apt-get -qq update && apt-get -qq upgrade -y && apt-get install -y \
     wget \
     unzip \
     maven \
-    nano \
     software-properties-common \
     python3-colcon-common-extensions \
     python3-rosdep \
@@ -47,6 +46,12 @@ RUN rosdep install --from-paths src --ignore-src --rosdistro ${ROS_DISTRO} -y -r
 RUN source /opt/ros/humble/setup.bash && colcon build --cmake-args -DCMAKE_BUILD_TYPE=Release --symlink-install
 
 WORKDIR /
+
+# Copy the entrypoint script
+COPY entrypoint_scripts/velodyne_node_entry.sh /velodyne_node_entry.sh
+COPY entrypoint_scripts/velodyne_points_entry.sh /velodyne_points_entry.sh
+RUN chmod +x /velodyne_node_entry.sh    
+RUN chmod +x /velodyne_points_entry.sh
 
 RUN echo "source /opt/ros/humble/setup.bash" >> ~/.bashrc
 RUN echo "source /colcon_velodyne/install/setup.bash" >> ~/.bashrc

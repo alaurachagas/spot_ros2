@@ -11,4 +11,6 @@ docker run \
     --env="DISPLAY" \
     -v "$HOME/.Xauthority:/root/.Xauthority:rw" \
     --name cartographer \
-    cartographer-ros:main
+    cartographer-ros:main \
+    bash -c "bash /cartographer_entry.sh; exec bash"
+
