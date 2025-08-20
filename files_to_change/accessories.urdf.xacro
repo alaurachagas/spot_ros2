@@ -4,7 +4,7 @@
   <xacro:if value="$(optenv SPOT_VELODYNE 0)">
     <!-- Use the Velodyne macro for the actual sensor -->
     <xacro:include filename="$(find velodyne_description)/urdf/VLP-16.urdf.xacro" />
-    <xacro:VLP-16 parent="base_link">
+    <xacro:VLP-16 parent="body">
       <origin xyz="$(optenv SPOT_VELODYNE_XYZ 0 0 0)" rpy="$(optenv SPOT_VELODYNE_RPY 0 0 0)" />
     </xacro:VLP-16>
   </xacro:if>

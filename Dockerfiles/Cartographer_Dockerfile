@@ -36,6 +36,6 @@ RUN echo "source /opt/ros/humble/setup.bash" >> ~/.bashrc && \
 RUN echo "export RMW_IMPLEMENTATION=rmw_zenoh_cpp" >> ~/.bashrc && \
     echo "export ROS_DOMAIN_ID=22" >> ~/.bashrc
 
-# Set the default command
-CMD ["bash"]
-
+# Copy the entrypoint script
+COPY entrypoint_scripts/cartographer_entry.sh /cartographer_entry.sh
+RUN chmod +x /cartographer_entry.sh
