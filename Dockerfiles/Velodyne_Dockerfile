@@ -17,6 +17,7 @@ RUN apt-get -qq update && apt-get -qq upgrade -y && apt-get install -y \
     wget \
     unzip \
     maven \
+    nano \
     software-properties-common \
     python3-colcon-common-extensions \
     python3-rosdep \

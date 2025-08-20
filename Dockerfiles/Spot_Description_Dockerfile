@@ -4,22 +4,36 @@ FROM ros:${ROS_DISTRO}-ros-core
 
 # Minimal build tooling for an ament_cmake package
 RUN apt-get update && apt-get install -y --no-install-recommends \
+    ros-${ROS_DISTRO}-rviz2 \
+    ros-${ROS_DISTRO}-robot-state-publisher \
+    ros-${ROS_DISTRO}-joint-state-publisher-gui \
+    ros-${ROS_DISTRO}-tf2-tools \
+    libgl1-mesa-glx libgl1-mesa-dri libglu1-mesa mesa-utils \
+    libxkbcommon-x11-0 libxrandr2 libxinerama1 libxi6 libxxf86vm1 libxrender1 \
+    libqt5gui5 libqt5widgets5 \
+    xauth dbus-x11 \
     ros-${ROS_DISTRO}-ament-cmake \
     python3-colcon-common-extensions \
     build-essential \
     ros-${ROS_DISTRO}-xacro \
+    ros-${ROS_DISTRO}-rmw-zenoh-cpp \
+ && rm -rf /var/lib/apt/lists/*
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    nano \
  && rm -rf /var/lib/apt/lists/*
 
 SHELL ["/bin/bash", "-c"]
 
+# Helpful at runtime to avoid MIT-SHM issues with X11
+ENV QT_X11_NO_MITSHM=1
+
 # Add your package
-COPY colcon_ws/src/spot_description/spot_description /colcon_ws/src/spot_description/
+COPY colcon_ws/src/spot_description/ /colcon_ws/src/spot_description/
 COPY colcon_ws/src/velodyne_description/ /colcon_ws/src/velodyne_description/
 
-
 # Change URDF file
-COPY files_to_change/spot_macro.xacro /colcon_ws/src/spot_description/spot_description/urdf/spot_macro.xacro
-
+COPY files_to_change/accessories.urdf.xacro /colcon_ws/src/spot_description/spot_description/urdf/accessories.urdf.xacro
 
 WORKDIR /colcon_ws
 
@@ -29,7 +43,12 @@ RUN source /opt/ros/${ROS_DISTRO}/setup.bash && \
 
 # Make the environment available by default
 RUN echo "source /opt/ros/${ROS_DISTRO}/setup.bash" >> /root/.bashrc && \
-    echo "source /colcon_ws/install/setup.bash" >> /root/.bashrc
+    echo "source /colcon_ws/install/setup.bash" >> /root/.bashrc && \
+    echo "export RMW_IMPLEMENTATION=rmw_zenoh_cpp" >> ~/.bashrc && \
+    echo "export ROS_DOMAIN_ID=22" >> ~/.bashrc && \
+    echo "export SPOT_VELODYNE=1" >> ~/.bashrc && \
+    echo "export SPOT_LIDAR_MOUNT=1" >> ~/.bashrc && \
+    echo "export SPOT_VELODYNE_XYZ='-0.33 0 0.12'" >> ~/.bashrc
 
 # Default shell; consumers will `docker run ...` and source or mount as needed
 CMD ["bash"]

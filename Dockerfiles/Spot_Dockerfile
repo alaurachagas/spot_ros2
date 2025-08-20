@@ -48,6 +48,10 @@ RUN apt-get update -q && \
     $(if [ "$EXPERIMENTAL_ZENOH_RMW" = "TRUE" ]; then echo "ros-humble-rmw-zenoh-cpp"; fi) \
     && rm -rf /var/lib/apt/lists/*
 
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    nano \
+ && rm -rf /var/lib/apt/lists/*
+
 # Set up workspace
 WORKDIR /ros_ws/src
 
@@ -61,16 +65,36 @@ RUN git submodule update --init --recursive
 # Run install script and pass in the architecture
 RUN ARCH=$(dpkg --print-architecture) && echo "Building driver with $ARCH" && /ros_ws/src/install_spot_ros2.sh --$ARCH
 
-RUN rm -rf /ros_ws/src/spot_description
-COPY colcon_ws/src/spot_description/spot_description /ros_ws/src/spot_description
+#RUN rm -rf /ros_ws/src/spot_description
+#COPY colcon_ws/src/spot_description/spot_description /ros_ws/src/spot_description
+
+# Change URDF file
+COPY files_to_change/accessories.urdf.xacro /ros_ws/src/spot_description/spot_description/urdf/accessories.urdf.xacro
 
 # Build packages with Colcon
 WORKDIR /ros_ws/
 RUN . /opt/ros/humble/setup.sh && \
     colcon build --symlink-install
 
-# Source the setup files
+WORKDIR /velodyne_ws/src
+
+COPY colcon_ws/src/velodyne_description/ /velodyne_ws/src/velodyne_description/
+WORKDIR /velodyne_ws/
+RUN . /opt/ros/humble/setup.sh && . /ros_ws/install/setup.sh && \
+    colcon build --symlink-install
+
+
+# Source the workspace
 RUN echo "source /opt/ros/humble/setup.bash" >> ~/.bashrc
 RUN echo "source /ros_ws/install/setup.bash" >> ~/.bashrc
+RUN echo "source /velodyne_ws/install/setup.bash" >> ~/.bashrc
 RUN echo "export RMW_IMPLEMENTATION=rmw_zenoh_cpp" >> ~/.bashrc
 RUN echo "export ROS_DOMAIN_ID=22" >> ~/.bashrc
+
+RUN echo 'export BOSDYN_CLIENT_USERNAME="user"' >> ~/.bashrc
+RUN echo 'export BOSDYN_CLIENT_PASSWORD="7imkn5gffaz9"' >> ~/.bashrc
+RUN echo 'export SPOT_IP=192.168.50.3' >> ~/.bashrc
+RUN echo "export SPOT_VELODYNE=1" >> ~/.bashrc && \
+    echo "export SPOT_LIDAR_MOUNT=1" >> ~/.bashrc && \
+    echo "export SPOT_VELODYNE_XYZ='-0.33 0 0.12'" >> ~/.bashrc && \
+    echo "export SPOT_PACK=1" >> ~/.bashrc
