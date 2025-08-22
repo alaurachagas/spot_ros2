@@ -36,6 +36,8 @@ FROM base as builder
 COPY colcon_ws/src/velodyne/ /colcon_velodyne/src/velodyne/
 COPY colcon_ws/src/velodyne_description/ /colcon_velodyne/src/velodyne_description/
 
+COPY files_to_change/VLP16-velodyne_transform_node-params.yaml colcon_velodyne/src/velodyne/velodyne_pointcloud/config/VLP16-velodyne_transform_node-params.yaml
+
 # Install module dependencies of base_ws
 WORKDIR /colcon_velodyne
 RUN source /opt/ros/${ROS_DISTRO}/setup.bash
