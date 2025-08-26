@@ -11,3 +11,11 @@
 [submodule "colcon_ws/src/spot_nav2"]
 	path = colcon_ws/src/spot_nav2
 	url = https://github.com/alaurachagas/spot_nav2.git
+[submodule "colcon_ws/src/point_cloud_transport"]
+	path = colcon_ws/src/point_cloud_transport
+	url = https://github.com/ros-perception/point_cloud_transport.git
+	branch = humble
+[submodule "colcon_ws/src/point_cloud_transport_plugins"]
+	path = colcon_ws/src/point_cloud_transport_plugins
+	url = https://github.com/ros-perception/point_cloud_transport_plugins.git
+	branch = humble
