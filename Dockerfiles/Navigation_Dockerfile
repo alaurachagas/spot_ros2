@@ -9,17 +9,15 @@ RUN apt-get update && apt-get install -y \
     lsb-release \
     && rm -rf /var/lib/apt/lists/*
 
-# Install Cartographer and ROS2 Zenoh middleware packages
-RUN apt-get update && apt-get install -y \
-    ros-humble-cartographer \
-    ros-humble-cartographer-ros \
-    ros-humble-cartographer-ros-msgs \
-    ros-humble-rmw-zenoh-cpp \
-    ros-humble-nav2-map-server \
+# Core Nav2 + useful debug tools
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    ros-${ROS_DISTRO}-nav2-bringup \
+    ros-${ROS_DISTRO}-tf2-tools \
+    ros-${ROS_DISTRO}-rmw-zenoh-cpp \
     && rm -rf /var/lib/apt/lists/*
 
 # Copy colcon_ws
-COPY colcon_ws/src/cartographer_spot /colcon_ws/src/cartographer_spot
+COPY colcon_ws/src/spot_nav2 /colcon_ws/src/spot_nav2
 
 WORKDIR /colcon_ws/
 
@@ -38,7 +36,6 @@ RUN echo "export RMW_IMPLEMENTATION=rmw_zenoh_cpp" >> ~/.bashrc && \
     echo "export ROS_DOMAIN_ID=22" >> ~/.bashrc
 
 # Copy the entrypoint script
-COPY entrypoint_scripts/cartographer_entry.sh /cartographer_entry.sh
-COPY entrypoint_scripts/save_map.sh /save_map.sh
-RUN chmod +x /cartographer_entry.sh /save_map.sh
+COPY entrypoint_scripts/navigation_entry.sh /navigation_entry.sh
+RUN chmod +x /navigation_entry.sh
 

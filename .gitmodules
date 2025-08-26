@@ -8,3 +8,6 @@
 [submodule "colcon_ws/src/spot_description"]
 	path = colcon_ws/src/spot_description
 	url = https://github.com/bdaiinstitute/spot_description.git
+[submodule "colcon_ws/src/spot_nav2"]
+	path = colcon_ws/src/spot_nav2
+	url = https://github.com/alaurachagas/spot_nav2.git

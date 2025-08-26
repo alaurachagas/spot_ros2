@@ -3,7 +3,7 @@ velodyne_transform_node:
         calibration: VLP16db.yaml
         model: VLP16
         min_range: 0.9
-        max_range: 10.0
+        max_range: 8.0
         view_direction: 0.0
         fixed_frame: ""
         target_frame: ""

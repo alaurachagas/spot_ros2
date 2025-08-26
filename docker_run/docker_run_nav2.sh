@@ -14,7 +14,7 @@ docker run \
     --env="DISPLAY" \
     -v "$HOME/.Xauthority:/root/.Xauthority:rw" \
     -v "$REPO_ROOT/map:/map" \
-    --name cartographer \
-    cartographer-ros:main \
-    bash -c "bash /cartographer_entry.sh; exec bash"
+    --name navigation \
+    navigation-ros:main \
+    bash -c "bash /navigation_entry.sh; exec bash"
 
