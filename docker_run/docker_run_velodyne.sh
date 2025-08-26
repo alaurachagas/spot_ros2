@@ -12,5 +12,5 @@ docker run \
     -v "$HOME/.Xauthority:/root/.Xauthority:rw" \
     --name velodyne \
     velodyne-ros:main \
-    bash -c "bash /velodyne_node_entry.sh; exec bash"
+    bash -c "bash /velodyne_node_entry.sh"
 

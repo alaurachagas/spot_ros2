@@ -2,6 +2,7 @@
 
 source /opt/ros/humble/setup.bash
 source /colcon_velodyne/install/setup.bash
+source /colcon_ws/install/setup.bash
 export RMW_IMPLEMENTATION=rmw_zenoh_cpp
 export ROS_DOMAIN_ID=22
 
