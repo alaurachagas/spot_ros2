@@ -10,4 +10,4 @@ export SPOT_LIDAR_MOUNT=1
 export SPOT_VELODYNE_XYZ='-0.33 0 0.12'
 export SPOT_PACK=1
 
-rviz2
+ros2 run rviz2 rviz2 -d /config/spot_config.rviz

@@ -53,3 +53,4 @@ RUN echo "source /opt/ros/${ROS_DISTRO}/setup.bash" >> /root/.bashrc && \
 # Copy the entrypoint script
 COPY entrypoint_scripts/description_entry.sh /description_entry.sh
 RUN chmod +x /description_entry.sh
+COPY config/spot_config.rviz /config/spot_config.rviz
