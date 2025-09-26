@@ -40,5 +40,7 @@ RUN echo "export RMW_IMPLEMENTATION=rmw_zenoh_cpp" >> ~/.bashrc && \
 # Copy the entrypoint script
 COPY entrypoint_scripts/cartographer_entry.sh /cartographer_entry.sh
 COPY entrypoint_scripts/save_map.sh /save_map.sh
-RUN chmod +x /cartographer_entry.sh /save_map.sh
+COPY entrypoint_scripts/carto_points_time.sh /carto_points_time.sh
+RUN chmod +x /cartographer_entry.sh /save_map.sh /carto_points_time.sh
+
 

@@ -4,7 +4,7 @@
 : "${ROS_DOMAIN_ID:=22}"
 echo "ROS_DOMAIN_ID is set to: $ROS_DOMAIN_ID"
 
-: "${HOST_NAME:=spot}"
+: "${HOST_NAME:=ubuntu}"
 echo "HOST_NAME is set to: $HOST_NAME"
 
 : "${HOST_IP:=192.168.10.134}"
