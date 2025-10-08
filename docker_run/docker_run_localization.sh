@@ -16,5 +16,5 @@ docker run \
     -v "$REPO_ROOT/map:/map" \
     --name cartographer \
     cartographer-ros:main \
-    bash #-c "bash /cartographer_entry.sh; exec bash"
+    bash -c "bash /localization_entry.sh"
 

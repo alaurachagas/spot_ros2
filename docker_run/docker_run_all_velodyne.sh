@@ -8,12 +8,14 @@ echo "ROS_DOMAIN_ID is set to: $ROS_DOMAIN_ID"
 echo "HOST_NAME is set to: $HOST_NAME"
 
 : "${HOST_IP:=192.168.10.134}"
+#: "${HOST_IP:=192.168.20.134}"
 echo "HOST_IP is set to: $HOST_IP"
 
 : "${ROBOT_NAME:=hiwi}"
 echo "ROBOT_NAME is set to: $ROBOT_NAME"
 
 : "${ROBOT_IP:=192.168.10.135}"
+#: "${ROBOT_IP:=172.16.35.6}"
 echo "ROBOT_IP is set to: $ROBOT_IP"
 
 : "${RMW_IMPLEMENTATION:=rmw_zenoh_cpp}"
