@@ -3,7 +3,7 @@
 	url = https://github.com/alaurachagas/cartographer_spot.git
 [submodule "colcon_ws/src/velodyne"]
 	path = colcon_ws/src/velodyne
-	url = https://github.com/ros-drivers/velodyne.git
+	url = https://github.com/alaurachagas/velodyne.git
 	branch = humble-devel
 [submodule "colcon_ws/src/spot_description"]
 	path = colcon_ws/src/spot_description
@@ -19,3 +19,6 @@
 	path = colcon_ws/src/point_cloud_transport_plugins
 	url = https://github.com/ros-perception/point_cloud_transport_plugins.git
 	branch = humble
+[submodule "colcon_ws/src/ai_agent_spot"]
+	path = colcon_ws/src/ai_agent_spot
+	url = https://github.com/alaurachagas/ai_agent_spot.git
