@@ -1,1 +1,1 @@
-docker exec -it cartographer bash -c "bash /carto_points_time.sh"
+docker exec -it cartographer bash -c "bash /carto_points_time.sh; exec bash"

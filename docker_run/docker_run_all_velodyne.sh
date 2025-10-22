@@ -4,11 +4,10 @@
 : "${ROS_DOMAIN_ID:=22}"
 echo "ROS_DOMAIN_ID is set to: $ROS_DOMAIN_ID"
 
-: "${HOST_NAME:=ubuntu}"
+: "${HOST_NAME:=${USER}}"
 echo "HOST_NAME is set to: $HOST_NAME"
 
-: "${HOST_IP:=192.168.10.134}"
-#: "${HOST_IP:=192.168.20.134}"
+: "${HOST_IP:=localhost}"
 echo "HOST_IP is set to: $HOST_IP"
 
 : "${ROBOT_NAME:=hiwi}"
@@ -33,7 +32,7 @@ CONTAINER_NAME_DECODING=velodyne_decoding
 
 # Docker kill commands
 DOCKER_KILL_COMMAND_VELODYNE_DRIVER="docker ps -q --filter name=${CONTAINER_NAME_VELODYNE_DRIVER} | grep -q . && docker rm -fv ${CONTAINER_NAME_VELODYNE_DRIVER}"
-DOCKER_KILL_COMMAND_VELODYNE_DRIVER="docker ps -q --filter name=${CONTAINER_NAME_VELODYNE_DRIVER_POINTS} | grep -q . && docker rm -fv ${CONTAINER_NAME_VELODYNE_DRIVER_POINTS}"
+DOCKER_KILL_COMMAND_VELODYNE_POINTS="docker ps -q --filter name=${CONTAINER_NAME_VELODYNE_DRIVER_POINTS} | grep -q . && docker rm -fv ${CONTAINER_NAME_VELODYNE_DRIVER_POINTS}"
 DOCKER_KILL_COMMAND_ENCODING="docker ps -q --filter name=${CONTAINER_NAME_ENCODING} | grep -q . && docker rm -fv ${CONTAINER_NAME_ENCODING}"
 DOCKER_KILL_COMMAND_DECODING="docker ps -q --filter name=${CONTAINER_NAME_DECODING} | grep -q . && docker rm -fv ${CONTAINER_NAME_DECODING}"
 
@@ -92,7 +91,7 @@ tmux set -g mouse on
 ping_test $ROBOT_IP
 tmux split-window -hf -t $TMUX_SESSION_NAME
 tmux send-keys -t $TMUX_SESSION_NAME "ssh -Y -t ${ROBOT_NAME}@${ROBOT_IP} \
-    '${DOCKER_KILL_COMMAND_ENCODING}; \
+    '${DOCKER_KILL_COMMAND_VELODYNE_DRIVER}; \
     docker run \
             -it \
             --rm \
@@ -106,7 +105,7 @@ tmux send-keys -t $TMUX_SESSION_NAME "ssh -Y -t ${ROBOT_NAME}@${ROBOT_IP} \
             --env RMW_IMPLEMENTATION=\${RMW_IMPLEMENTATION} \
             --env ROS_DOMAIN_ID=\${ROS_DOMAIN_ID} \
             --name velodyne_driver_node \
-            velodyne-ros:main  \
+            $IMAGE  \
             bash -c \"bash /velodyne_node_entry.sh; exec bash\"'" Enter
 
 sleep 2
@@ -115,7 +114,7 @@ sleep 2
 ping_test $ROBOT_IP
 tmux split-window -hf -t $TMUX_SESSION_NAME
 tmux send-keys -t $TMUX_SESSION_NAME "ssh -Y -t ${ROBOT_NAME}@${ROBOT_IP} \
-    '${DOCKER_KILL_COMMAND_ENCODING}; \
+    '${DOCKER_KILL_COMMAND_VELODYNE_POINTS}; \
     docker run \
             -it \
             --rm \
@@ -129,7 +128,7 @@ tmux send-keys -t $TMUX_SESSION_NAME "ssh -Y -t ${ROBOT_NAME}@${ROBOT_IP} \
             --env RMW_IMPLEMENTATION=\${RMW_IMPLEMENTATION} \
             --env ROS_DOMAIN_ID=\${ROS_DOMAIN_ID} \
             --name velodyne_driver_points \
-            velodyne-ros:main  \
+            $IMAGE  \
             bash -c \"bash /velodyne_points_entry.sh; exec bash\"'" Enter
 
 sleep 2
@@ -152,7 +151,7 @@ tmux send-keys -t $TMUX_SESSION_NAME "ssh -Y -t ${ROBOT_NAME}@${ROBOT_IP} \
             --env RMW_IMPLEMENTATION=\${RMW_IMPLEMENTATION} \
             --env ROS_DOMAIN_ID=\${ROS_DOMAIN_ID} \
             --name velodyne_encoding \
-            velodyne-ros:main  \
+            $IMAGE  \
             bash -c \"bash /velodyne_encoder_entry.sh; exec bash\"'" Enter
 
 sleep 2
@@ -175,7 +174,7 @@ tmux send-keys -t $TMUX_SESSION_NAME "ssh -Y -t ${HOST_NAME}@${HOST_IP} \
             --env RMW_IMPLEMENTATION=\${RMW_IMPLEMENTATION} \
             --env ROS_DOMAIN_ID=\${ROS_DOMAIN_ID} \
             --name velodyne_decoding \
-            velodyne-ros:main  \
+            $IMAGE  \
             bash -c \"bash /velodyne_decoder_entry.sh; exec bash\"'" Enter
 
 sleep 2
