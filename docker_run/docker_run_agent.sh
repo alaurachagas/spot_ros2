@@ -1,1 +1,1 @@
-docker exec -it agent bash -c "bash /agent_entry.sh; exec bash"
+docker exec -it agent bash -c "source /agent_entry.sh; exec bash"
