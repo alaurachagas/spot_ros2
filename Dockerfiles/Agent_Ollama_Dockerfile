@@ -54,6 +54,9 @@ RUN echo "source /opt/ros/humble/setup.bash" >> /root/.bashrc
 # RUN echo "source /colcon_ws_ws/install/setup.bash" >> /root/.bashrc
 RUN echo "source /overlay_ws/install/setup.bash" >> /root/.bashrc
 
+RUN echo "export RMW_IMPLEMENTATION=rmw_zenoh_cpp" >> ~/.bashrc && \
+    echo "export ROS_DOMAIN_ID=22" >> ~/.bashrc
+
 # Copy Entry Point Scripts
 COPY entrypoint_scripts/agent_entry.sh /agent_entry.sh
 COPY entrypoint_scripts/llm_entry.sh /llm_entry.sh
