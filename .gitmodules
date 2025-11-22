@@ -22,3 +22,6 @@
 [submodule "colcon_ws/src/ai_agent_spot"]
 	path = colcon_ws/src/ai_agent_spot
 	url = https://github.com/alaurachagas/ai_agent_spot.git
+[submodule "colcon_ws/src/webots_ros2_spot"]
+	path = colcon_ws/src/webots_ros2_spot
+	url = https://github.com/MASKOR/webots_ros2_spot.git
