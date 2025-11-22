@@ -1,0 +1,65 @@
+non-network local connections being added to access control list
+[INFO] [launch]: All log files can be found below /root/.ros/log/2025-10-24-13-11-44-784729-PC-019-35
+[INFO] [launch]: Default logging verbosity is set to INFO
+[INFO] [cartographer_node-1]: process started with pid [36]
+[INFO] [cartographer_occupancy_grid_node-2]: process started with pid [38]
+[cartographer_node-1] [INFO] [1761311504.836165996] [cartographer logger]: I1024 13:11:44.000000    36 configuration_file_resolver.cc:41] Found '/colcon_ws/install/spot_cartographer/share/spot_cartographer/config/real_spot_localization.lua' for 'real_spot_localization.lua'.
+[cartographer_node-1] [INFO] [1761311504.836385361] [cartographer logger]: I1024 13:11:44.000000    36 configuration_file_resolver.cc:41] Found '/opt/ros/humble/share/cartographer/configuration_files/map_builder.lua' for 'map_builder.lua'.
+[cartographer_node-1] [INFO] [1761311504.836405888] [cartographer logger]: I1024 13:11:44.000000    36 configuration_file_resolver.cc:41] Found '/opt/ros/humble/share/cartographer/configuration_files/map_builder.lua' for 'map_builder.lua'.
+[cartographer_node-1] [INFO] [1761311504.836445690] [cartographer logger]: I1024 13:11:44.000000    36 configuration_file_resolver.cc:41] Found '/opt/ros/humble/share/cartographer/configuration_files/pose_graph.lua' for 'pose_graph.lua'.
+[cartographer_node-1] [INFO] [1761311504.836462272] [cartographer logger]: I1024 13:11:44.000000    36 configuration_file_resolver.cc:41] Found '/opt/ros/humble/share/cartographer/configuration_files/pose_graph.lua' for 'pose_graph.lua'.
+[cartographer_node-1] [INFO] [1761311504.836554567] [cartographer logger]: I1024 13:11:44.000000    36 configuration_file_resolver.cc:41] Found '/opt/ros/humble/share/cartographer/configuration_files/trajectory_builder.lua' for 'trajectory_builder.lua'.
+[cartographer_node-1] [INFO] [1761311504.836572007] [cartographer logger]: I1024 13:11:44.000000    36 configuration_file_resolver.cc:41] Found '/opt/ros/humble/share/cartographer/configuration_files/trajectory_builder.lua' for 'trajectory_builder.lua'.
+[cartographer_node-1] [INFO] [1761311504.836608546] [cartographer logger]: I1024 13:11:44.000000    36 configuration_file_resolver.cc:41] Found '/opt/ros/humble/share/cartographer/configuration_files/trajectory_builder_2d.lua' for 'trajectory_builder_2d.lua'.
+[cartographer_node-1] [INFO] [1761311504.836624760] [cartographer logger]: I1024 13:11:44.000000    36 configuration_file_resolver.cc:41] Found '/opt/ros/humble/share/cartographer/configuration_files/trajectory_builder_2d.lua' for 'trajectory_builder_2d.lua'.
+[cartographer_node-1] [INFO] [1761311504.836704667] [cartographer logger]: I1024 13:11:44.000000    36 configuration_file_resolver.cc:41] Found '/opt/ros/humble/share/cartographer/configuration_files/trajectory_builder_3d.lua' for 'trajectory_builder_3d.lua'.
+[cartographer_node-1] [INFO] [1761311504.836720842] [cartographer logger]: I1024 13:11:44.000000    36 configuration_file_resolver.cc:41] Found '/opt/ros/humble/share/cartographer/configuration_files/trajectory_builder_3d.lua' for 'trajectory_builder_3d.lua'.
+[cartographer_node-1] [INFO] [1761311504.842137919] [cartographer logger]: I1024 13:11:44.000000    36 map_builder_bridge.cpp:117] Loading saved state '/map/halle_22_oct.pbstream'...
+[cartographer_node-1] [WARN] [1761311504.846569139] [cartographer logger]: W1024 13:11:44.000000    36 fixed_ratio_sampler.cc:26] FixedRatioSampler is dropping all data.
+[cartographer_node-1] [INFO] [1761311504.880803322] [cartographer logger]: I1024 13:11:44.000000    36 map_builder_bridge.cpp:136] Added trajectory with ID '1'.
+[cartographer_node-1] [INFO] [1761311506.837045702] [cartographer logger]: I1024 13:11:46.000000    36 ordered_multi_queue.cc:172] All sensor data for trajectory 1 is available starting at '638969083067454164'.
+[cartographer_node-1] [INFO] [1761311506.837080264] [cartographer logger]: I1024 13:11:46.000000    36 local_trajectory_builder_2d.cc:312] Extrapolator not yet initialized.
+[cartographer_node-1] [INFO] [1761311506.837390479] [cartographer logger]: I1024 13:11:46.000000    36 local_trajectory_builder_2d.cc:135] Extrapolator is still initializing.
+[cartographer_node-1] [WARN] [1761311506.934412028] [cartographer logger]: W1024 13:11:46.000000    36 fixed_ratio_sampler.cc:26] FixedRatioSampler is dropping all data.
+[cartographer_node-1] [INFO] [1761311506.934429821] [cartographer logger]: I1024 13:11:46.000000    36 pose_graph_2d.cc:148] Inserted submap (1, 0).
+[cartographer_node-1] [INFO] [1761311519.954218768] [cartographer logger]: I1024 13:11:59.000000    36 collated_trajectory_builder.cc:81] odom rate: 50.00 Hz 2.00e-02 s +/- 2.07e-03 s (pulsed at 99.42% real time)
+[cartographer_node-1] [INFO] [1761311519.954248111] [cartographer logger]: I1024 13:11:59.000000    36 collated_trajectory_builder.cc:81] points2 rate: 9.91 Hz 1.01e-01 s +/- 5.85e-05 s (pulsed at 100.13% real time)
+[cartographer_node-1] [INFO] [1761311534.976904065] [cartographer logger]: I1024 13:12:14.000000    36 collated_trajectory_builder.cc:81] odom rate: 49.99 Hz 2.00e-02 s +/- 1.93e-03 s (pulsed at 100.11% real time)
+[cartographer_node-1] [INFO] [1761311534.976933614] [cartographer logger]: I1024 13:12:14.000000    36 collated_trajectory_builder.cc:81] points2 rate: 9.91 Hz 1.01e-01 s +/- 7.03e-05 s (pulsed at 100.10% real time)
+[cartographer_node-1] [INFO] [1761311550.013013121] [cartographer logger]: I1024 13:12:30.000000    36 collated_trajectory_builder.cc:81] odom rate: 50.00 Hz 2.00e-02 s +/- 2.05e-03 s (pulsed at 99.96% real time)
+[cartographer_node-1] [INFO] [1761311550.013034144] [cartographer logger]: I1024 13:12:30.000000    36 collated_trajectory_builder.cc:81] points2 rate: 9.91 Hz 1.01e-01 s +/- 6.65e-05 s (pulsed at 100.02% real time)
+[cartographer_node-1] [INFO] [1761311557.364225562] [cartographer logger]: I1024 13:12:37.000000    36 motion_filter.cc:42] Motion filter reduced the number of nodes to 8%.
+[cartographer_node-1] [INFO] [1761311565.035639475] [cartographer logger]: I1024 13:12:45.000000    36 collated_trajectory_builder.cc:81] odom rate: 50.02 Hz 2.00e-02 s +/- 2.04e-03 s (pulsed at 99.97% real time)
+[cartographer_node-1] [INFO] [1761311565.035668846] [cartographer logger]: I1024 13:12:45.000000    36 collated_trajectory_builder.cc:81] points2 rate: 9.91 Hz 1.01e-01 s +/- 7.90e-05 s (pulsed at 100.05% real time)
+[cartographer_node-1] [INFO] [1761311580.052166203] [cartographer logger]: I1024 13:13:00.000000    36 collated_trajectory_builder.cc:81] odom rate: 50.00 Hz 2.00e-02 s +/- 2.06e-03 s (pulsed at 99.97% real time)
+[cartographer_node-1] [INFO] [1761311580.052187321] [cartographer logger]: I1024 13:13:00.000000    36 collated_trajectory_builder.cc:81] points2 rate: 9.91 Hz 1.01e-01 s +/- 6.63e-05 s (pulsed at 100.14% real time)
+[cartographer_node-1] [INFO] [1761311587.230509003] [cartographer logger]: I1024 13:13:07.000000    36 pose_graph_2d.cc:148] Inserted submap (1, 1).
+[cartographer_node-1] [INFO] [1761311595.094793162] [cartographer logger]: I1024 13:13:15.000000    36 collated_trajectory_builder.cc:81] odom rate: 49.99 Hz 2.00e-02 s +/- 2.13e-03 s (pulsed at 100.07% real time)
+[cartographer_node-1] [INFO] [1761311595.094815019] [cartographer logger]: I1024 13:13:15.000000    36 collated_trajectory_builder.cc:81] points2 rate: 9.91 Hz 1.01e-01 s +/- 7.42e-05 s (pulsed at 99.90% real time)
+^C[WARNING] [launch]: user interrupted with ctrl-c (SIGINT)
+[cartographer_node-1] [INFO] [1761311597.008977564] [rclcpp]: signal_handler(signum=2)
+[cartographer_occupancy_grid_node-2] [INFO] [1761311597.008979671] [rclcpp]: signal_handler(signum=2)
+[cartographer_node-1] [INFO] [1761311597.016153251] [cartographer logger]: I1024 13:13:17.000000    36 node.cpp:569] Shutdown the subscriber of [points2]
+[cartographer_node-1] [INFO] [1761311597.016268370] [cartographer logger]: I1024 13:13:17.000000    36 node.cpp:569] Shutdown the subscriber of [odom]
+[cartographer_node-1] [INFO] [1761311597.016276275] [cartographer logger]: I1024 13:13:17.000000    36 map_builder_bridge.cpp:152] Finishing trajectory with ID '1'...
+[cartographer_node-1] [WARN] [1761311597.016327945] [cartographer logger]: W1024 13:13:17.000000    36 node.cpp:773] Can't run final optimization if there are one or more active trajectories. Trying to finish trajectory with ID 1 now.
+[cartographer_node-1] [INFO] [1761311597.016349103] [cartographer logger]: I1024 13:13:17.000000    68 pose_graph_2d.cc:538] Remaining work items in queue: 0
+[cartographer_node-1] [INFO] [1761311597.016376174] [cartographer logger]: I1024 13:13:17.000000    68 constraint_builder_2d.cc:290] 0 computations resulted in 0 additional constraints.
+[cartographer_node-1] [INFO] [1761311597.016383316] [cartographer logger]: I1024 13:13:17.000000    68 constraint_builder_2d.cc:292] Score histogram:
+[cartographer_node-1] Count: 0
+[cartographer_node-1] [INFO] [1761311597.016519693] [cartographer logger]: I1024 13:13:17.000000    36 node.cpp:551] Trajectory 1 already pending to finish.
+[cartographer_node-1] [INFO] [1761311597.016533259] [cartographer logger]: I1024 13:13:17.000000    36 map_builder_bridge.cpp:161] Running final trajectory optimization...
+[cartographer_node-1] [INFO] [1761311597.018432381] [cartographer logger]: I1024 13:13:17.000000    68 pose_graph_2d.cc:538] Remaining work items in queue: 1
+[cartographer_node-1] [INFO] [1761311597.018444888] [cartographer logger]: I1024 13:13:17.000000    68 constraint_builder_2d.cc:290] 0 computations resulted in 0 additional constraints.
+[cartographer_node-1] [INFO] [1761311597.018447821] [cartographer logger]: I1024 13:13:17.000000    68 constraint_builder_2d.cc:292] Score histogram:
+[cartographer_node-1] Count: 0
+[cartographer_node-1] [INFO] [1761311597.019075761] [cartographer logger]: I1024 13:13:17.000000    67 constraint_builder_2d.cc:290] 0 computations resulted in 0 additional constraints.
+[cartographer_node-1] [INFO] [1761311597.019090858] [cartographer logger]: I1024 13:13:17.000000    67 constraint_builder_2d.cc:292] Score histogram:
+[cartographer_node-1] Count: 0
+[cartographer_node-1] [KOptimizing: Done.     
+[cartographer_node-1] [INFO] [1761311597.020413112] [cartographer logger]: I1024 13:13:17.000000    69 constraint_builder_2d.cc:290] 0 computations resulted in 0 additional constraints.
+[cartographer_node-1] [INFO] [1761311597.020434907] [cartographer logger]: I1024 13:13:17.000000    69 constraint_builder_2d.cc:292] Score histogram:
+[cartographer_node-1] Count: 0
+[cartographer_node-1] [KOptimizing: Done.     
+[INFO] [cartographer_occupancy_grid_node-2]: process has finished cleanly [pid 38]
+[INFO] [cartographer_node-1]: process has finished cleanly [pid 36]

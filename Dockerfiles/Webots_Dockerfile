@@ -52,7 +52,12 @@ COPY colcon_ws/src/webots_ros2_spot /colcon_ws/src/webots_ros2_spot
 # Copy world files into the workspace
 # COPY modified_files/spot_driver.py /colcon_ws/src/webots_ros2_spot/webots_spot/spot_driver.py
 COPY webots_files/world_files/*.wbt /colcon_ws/src/webots_ros2_spot/worlds/
+COPY webots_files/launch_files/*_launch.py /colcon_ws/src/webots_ros2_spot/launch/
 # COPY maps/wzl_2.wbt /colcon_ws/src/webots_ros2_spot/worlds/wzl.wbt
+
+
+# Fix MAP BUG
+COPY webots_files/config_files/spot_driver.py /colcon_ws/src/webots_ros2_spot/webots_spot/spot_driver.py
 
 # #Uncomment to use map
 # COPY modified_files/wzl_map.pgm /colcon_ws/src/webots_ros2_spot/map/wzl_map.pgm

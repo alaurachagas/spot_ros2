@@ -1,0 +1,4 @@
+[INFO] [1761145288.115122233] [Spot_Agent]: Waiting for message to be published ...
+[INFO] [1761145288.115293317] [Spot_Agent]: Recieved message: walk forward with SPot 1 meter
+[INFO] [1761145288.115419090] [Spot_Agent]: Invoking Agent with the query: walk forward with SPot 1 meter
+[ERROR] [1761145308.740017265] [Spot_Agent]: Error executing tool: "map" passed to lookupTransform argument target_frame does not exist. 
