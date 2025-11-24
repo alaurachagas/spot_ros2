@@ -16,5 +16,5 @@ docker run \
     -v "$REPO_ROOT/map:/map" \
     --name navigation \
     navigation-ros:main \
-    bash -c "bash /navigation_entry.sh; exec bash"
+    bash -c "source install/setup.bash && ros2 launch spot_nav2 sim_nav2.launch.py; exec bash"
 

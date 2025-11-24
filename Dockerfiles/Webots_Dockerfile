@@ -39,6 +39,7 @@ RUN apt-get update && apt-get install -y \
     ros-humble-joint-state-publisher-gui \
     ros-humble-pointcloud-to-laserscan \
     ros-humble-xacro \
+    ros-humble-rmw-zenoh-cpp \
  && rm -rf /var/lib/apt/lists/*
 
 # Set Webots environment variables
@@ -58,6 +59,7 @@ COPY webots_files/launch_files/*_launch.py /colcon_ws/src/webots_ros2_spot/launc
 
 # Fix MAP BUG
 COPY webots_files/config_files/spot_driver.py /colcon_ws/src/webots_ros2_spot/webots_spot/spot_driver.py
+# COPY webots_files/config_files/my_VelodynePuck.proto /colcon_ws/src/webots_ros2_spot/protos/my_VelodynePuck.proto
 
 # #Uncomment to use map
 # COPY modified_files/wzl_map.pgm /colcon_ws/src/webots_ros2_spot/map/wzl_map.pgm
@@ -92,6 +94,14 @@ RUN /bin/bash -c "source /opt/ros/humble/setup.bash && colcon build --symlink-in
 RUN echo "source /opt/ros/humble/setup.bash" >> ~/.bashrc && \
     echo "source /colcon_ws/install/setup.bash" >> ~/.bashrc
     # echo "source /overlay_ws/install/setup.bash" >> ~/.bashrc
+
+# Runtime env (set as ENV so non-interactive shells see them)
+ENV RMW_IMPLEMENTATION=rmw_zenoh_cpp \
+    ROS_DOMAIN_ID=22
+
+# Optional: helpful entry scripts
+# COPY entrypoint_scripts/webots_entry.sh /webots_entry.sh
+# RUN chmod +x /webots_entry.sh
 
 # Set the default command
 CMD ["bash"]

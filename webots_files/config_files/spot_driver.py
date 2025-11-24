@@ -15,8 +15,6 @@ import copy
 from webots_spot.SpotKinematics import SpotModel
 from webots_spot.Bezier import BezierGait
 
-from webots_spot.arena_modifier import ArenaModifier
-
 NUMBER_OF_JOINTS = 12
 HEIGHT = 0.52  # From spot kinematics
 
@@ -128,29 +126,12 @@ class SpotDriver:
 
         self.__node.get_logger().info("Init SpotDriver")
 
-        # Parameters
-        self.arena2 = properties["arena2"] == "true"
-        self.arena3 = properties["arena3"] == "true"
-
         self.__robot = webots_node.robot
         self.spot_node = self.__robot.getFromDef("Spot")
 
         self.spot_translation = self.spot_node.getField("translation")
-
-        if self.arena2:
-            self.spot_translation.setSFVec3f([7.0, 14.5, 0.5])
-            self.spot_rotation.setSFRotation([0, 0, -1, 1.57])
-            viewpoint = self.__robot.getFromDef("Viewpoint")
-            viewpoint.getField("position").setSFVec3f([11.8, 19.5, 9])
-            viewpoint.getField("orientation").setSFRotation([-0.52, 0, 0.85, 3.1])
-
-        elif self.arena3:
-            self.spot_translation.setSFVec3f([8.0, 18.0, 0.5])
-            viewpoint = self.__robot.getFromDef("Viewpoint")
-            viewpoint.getField("position").setSFVec3f([11.8, 19.5, 9])
-            viewpoint.getField("orientation").setSFRotation([-0.52, 0, 0.85, 3.1])
-
         self.spot_translation_initial = self.spot_translation.getSFVec3f()
+
         self.spot_rotation = self.spot_node.getField("rotation")
         self.spot_rotation_initial = self.spot_rotation.getSFRotation()
 
@@ -196,19 +177,9 @@ class SpotDriver:
         )
         self.odom_pub = self.__node.create_publisher(Odometry, "/Spot/odometry", 1)
 
-        ## Services
-        self.__node.create_service(SpotMotion, "/Spot/stand_up", self.__stand_motion_cb)
-        self.__node.create_service(SpotMotion, "/Spot/sit_down", self.__sit_motion_cb)
-        self.__node.create_service(SpotMotion, "/Spot/lie_down", self.__lie_motion_cb)
-        self.__node.create_service(
-            SpotMotion, "/Spot/shake_hand", self.__shakehand_motion_cb
-        )
+    
         self.__node.create_service(
             SpotHeight, "/Spot/set_height", self.__spot_height_cb
-        )
-
-        self.__node.create_service(
-            SpotMotion, "/Spot/blocksworld_pose", self.blocksworld_pose
         )
 
         ## Webots Touch Sensors
@@ -291,9 +262,6 @@ class SpotDriver:
         self.paw2 = False
         self.paw_time = 0.0
         self.previous_cmd = False
-
-        # Initialise arena modifier
-        ArenaModifier(self.__node, self.__robot)
 
     def __model_cb(self):
         spot_rot = self.spot_node.getField("rotation")
@@ -575,83 +543,6 @@ class SpotDriver:
             for i in range(NUMBER_OF_JOINTS)
         ]
         self.m_target = []
-
-    def blocksworld_pose(self, request, response):
-        self.spot_node.getField("translation").setSFVec3f([-7.28, -3.78, 0.081])
-        self.spot_node.getField("rotation").setSFRotation([0, 0, -1, -3.14159])
-
-        self.fixed_motion = True
-
-        self.paw = False
-        self.paw2 = False
-        self.movement_decomposition(motions["lie"], 1)
-        response.answer = "lying down"
-
-        return response
-
-    def __stand_motion_cb(self, request, response):
-        self.fixed_motion = True
-        if self.previous_cmd and not request.override:
-            response.answer = "performing previous command, override with bool argument"
-            return response
-
-        self.paw = False
-        self.paw2 = False
-        self.movement_decomposition(motions["stand"], 1)
-        response.answer = "standing up"
-        return response
-
-    def __sit_motion_cb(self, request, response):
-        self.fixed_motion = True
-        if self.previous_cmd and not request.override:
-            response.answer = "performing previous command, override with bool argument"
-            return response
-
-        self.paw = False
-        self.paw2 = False
-        self.movement_decomposition(motions["sit"], 1)
-        response.answer = "sitting down"
-        return response
-
-    def __lie_motion_cb(self, request, response):
-        self.fixed_motion = True
-        if self.previous_cmd and not request.override:
-            response.answer = "performing previous command, override with bool argument"
-            return response
-
-        self.paw = False
-        self.paw2 = False
-        self.movement_decomposition(motions["lie"], 1)
-        response.answer = "lying down"
-        return response
-
-    def __shakehand_motion_cb(self, request, response):
-        self.fixed_motion = True
-        if self.previous_cmd and not request.override:
-            response.answer = "performing previous command, override with bool argument"
-            return response
-
-        # Start handshake motion
-        self.movement_decomposition(
-            [
-                -0.20,
-                -0.30,
-                0.05,
-                0.20,
-                -0.40,
-                -0.19,
-                -0.40,
-                -0.90,
-                1.18,
-                0.49,
-                -0.90,
-                0.80,
-            ],
-            1,
-        )
-        self.paw = True
-        response.answer = "shaking hands"
-        return response
 
     def defined_motions(self):
         self.handle_transforms_and_odometry()  # Let the sensor values get updated

@@ -73,6 +73,7 @@ DEF Spot Spot {
       translation 0 0.04 0.09
       rotation -0.577349935856137 0.577349935856137 0.5773509358560258 2.09439
       name "Velodyne_Puck"
+      defaultFrequency 10
     }
   ]
 }

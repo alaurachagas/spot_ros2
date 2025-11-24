@@ -28,11 +28,14 @@ docker run \
     --gpus all \
     --net=host \
     --privileged \
-    --env="DISPLAY" \
+    -e DISPLAY=${DISPLAY} \
+    -e NVIDIA_VISIBLE_DEVICES=all \
+    -e NVIDIA_DRIVER_CAPABILITIES=graphics,compute,utility \
+    -v /tmp/.X11-unix:/tmp/.X11-unix:rw \
     -v "$HOME/.Xauthority:/root/.Xauthority:rw" \
     --volume "$MAPS_DIR":/maps \
     --volume "$LAUNCH_DIR/agent_nav_launch.py:/colcon_ws/install/webots_spot/share/webots_spot/launch/agent_nav_launch.py" \
     --volume "$LAUNCH_DIR/agent_spot_launch.py:/colcon_ws/install/webots_spot/share/webots_spot/launch/agent_spot_launch.py" \
     --name test \
     spot_webots:main \
-    bash -c "ros2 launch webots_spot agent_spot_launch.py; exec bash"
+    bash -c "source install/setup.bash && ros2 launch webots_spot agent_spot_launch.py; exec bash"

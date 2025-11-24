@@ -16,5 +16,5 @@ docker run \
     -v "$REPO_ROOT/map:/map" \
     --name cartographer \
     cartographer-ros:main \
-    bash -c "bash /cartographer_entry.sh; exec bash"
+    bash -c "source install/setup.bash && ros2 launch spot_cartographer sim_spot.launch.py; exec bash"
 

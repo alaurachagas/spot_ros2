@@ -22,6 +22,7 @@ RUN apt-get update && apt-get install -y \
     ros-humble-std-msgs \
     python3-colcon-common-extensions \
     ros-humble-rmw-zenoh-cpp \
+    ros-humble-navigation2 \
   && rm -rf /var/lib/apt/lists/*
 
 RUN pip install --no-cache-dir --pre -U \
