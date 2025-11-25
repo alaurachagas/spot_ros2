@@ -37,5 +37,5 @@ docker run \
     --volume "$LAUNCH_DIR/agent_nav_launch.py:/colcon_ws/install/webots_spot/share/webots_spot/launch/agent_nav_launch.py" \
     --volume "$LAUNCH_DIR/agent_spot_launch.py:/colcon_ws/install/webots_spot/share/webots_spot/launch/agent_spot_launch.py" \
     --name test \
-    spot_webots:main \
+    spot_webots_test:main \
     bash -c "source install/setup.bash && ros2 launch webots_spot agent_spot_launch.py; exec bash"

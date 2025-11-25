@@ -58,7 +58,7 @@ COPY webots_files/launch_files/*_launch.py /colcon_ws/src/webots_ros2_spot/launc
 
 
 # Fix MAP BUG
-COPY webots_files/config_files/spot_driver.py /colcon_ws/src/webots_ros2_spot/webots_spot/spot_driver.py
+COPY webots_files/config_files/spot_driver_.py /colcon_ws/src/webots_ros2_spot/webots_spot/spot_driver.py
 # COPY webots_files/config_files/my_VelodynePuck.proto /colcon_ws/src/webots_ros2_spot/protos/my_VelodynePuck.proto
 
 # #Uncomment to use map
