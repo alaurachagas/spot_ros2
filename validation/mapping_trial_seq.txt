@@ -1,0 +1,22 @@
+[0m[INFO] [1764229127.433767232] [Spot_Agent]: Spot Agent initialised and waiting for messages ...[0m
+[0m[INFO] [1764229127.434192361] [Spot_Agent]: Waiting for message to be published ...[0m
+[0m[INFO] [1764229127.434326816] [Spot_Agent]: Recieved message: execute mapping sequence[0m
+[0m[INFO] [1764229127.434440696] [Spot_Agent]: Invoking Agent with the query: execute mapping sequence[0m
+[0m[INFO] [1764229129.716821219] [Spot_Agent]: Agent Response: {'messages': [HumanMessage(content='execute mapping sequence', additional_kwargs={}, response_metadata={}, id='61c1a15d-f8ea-4f39-82ed-5c2513dbf27f'), AIMessage(content='To answer this question, I need to break down the query into different tasks. Here are the tasks:\n\n1. Save the current robot pose with a name "start_mapping"\n2. Move the robot to the saved location using "move_to_goal" function with argument "goal_location = \'end_mapping\'"\n\nHere is the JSON for each task:\n\nTask 1:\n{"name": "save_location_tool", "parameters": {"name": "start_mapping"}}\n \nTask 2:\n{"name": "move_to_goal", "parameters": {"goal_location": "end_mapping"}}', additional_kwargs={}, response_metadata={'model': 'llama3.1', 'created_at': '2025-11-27T07:38:49.715341279Z', 'done': True, 'done_reason': 'stop', 'total_duration': 2270806397, 'load_duration': 1155934311, 'prompt_eval_count': 1067, 'prompt_eval_duration': 197166500, 'eval_count': 117, 'eval_duration': 916635781, 'model_name': 'llama3.1', 'model_provider': 'ollama'}, id='lc_run--bf7d3ad5-8e4d-49ec-a2c2-b0f8cc35435b-0', usage_metadata={'input_tokens': 1067, 'output_tokens': 117, 'total_tokens': 1184})]}[0m
+[0m[INFO] [1764229129.717151635] [Spot_Agent]: Waiting for the next message...
+[0m
+^C[0m[INFO] [1764229165.808855334] [Spot_Agent]: Keyboard interrupt received, shutting down...[0m
+Failed to publish log message to rosout: publisher's context is invalid, at ./src/rcl/publisher.c:389
+Traceback (most recent call last):
+  File "/overlay_ws/install/spot_agent/lib/spot_agent/agent", line 33, in <module>
+    sys.exit(load_entry_point('spot-agent', 'console_scripts', 'agent')())
+  File "/overlay_ws/build/spot_agent/spot_agent/agent/agent_node.py", line 74, in main
+    rclpy.shutdown()
+  File "/opt/ros/humble/local/lib/python3.10/dist-packages/rclpy/__init__.py", line 130, in shutdown
+    _shutdown(context=context)
+  File "/opt/ros/humble/local/lib/python3.10/dist-packages/rclpy/utilities.py", line 58, in shutdown
+    return context.shutdown()
+  File "/opt/ros/humble/local/lib/python3.10/dist-packages/rclpy/context.py", line 102, in shutdown
+    self.__context.shutdown()
+rclpy._rclpy_pybind11.RCLError: failed to shutdown: rcl_shutdown already called on the given context, at ./src/rcl/init.c:241
+[ros2run]: Process exited with failure 1
