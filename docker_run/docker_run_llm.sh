@@ -18,7 +18,7 @@ docker run \
     -v "$REPO_ROOT/colcon_ws/src/ai_agent_spot/saved_data:/overlay_ws/install/spot_agent/share/spot_agent/saved_data" \
     --name agent \
     ai-agent_spot_test:main \
-    bash -c "bash /llm_entry.sh; exec bash"
+    bash -c "bash /llm_entry.sh"
 
 
 

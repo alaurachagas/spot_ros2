@@ -14,7 +14,8 @@ docker run \
     --env="DISPLAY" \
     -v "$HOME/.Xauthority:/root/.Xauthority:rw" \
     -v "$REPO_ROOT/map:/map" \
+    -v "$REPO_ROOT/entrypoint_scripts/save_map.sh:/save_map.sh" \
     --name cartographer \
     cartographer-ros:main \
-    bash -c "bash /cartographer_entry.sh; exec bash"
+    bash -c "bash /cartographer_entry.sh"
 
