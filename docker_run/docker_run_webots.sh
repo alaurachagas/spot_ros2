@@ -34,8 +34,9 @@ docker run \
     -v /tmp/.X11-unix:/tmp/.X11-unix:rw \
     -v "$HOME/.Xauthority:/root/.Xauthority:rw" \
     --volume "$MAPS_DIR":/maps \
+    --volume "$PROJECT_ROOT/config:/config" \
     --volume "$LAUNCH_DIR/agent_nav_launch.py:/colcon_ws/install/webots_spot/share/webots_spot/launch/agent_nav_launch.py" \
     --volume "$LAUNCH_DIR/agent_spot_launch.py:/colcon_ws/install/webots_spot/share/webots_spot/launch/agent_spot_launch.py" \
     --name test \
     spot_webots_test:main \
-    bash -c "source install/setup.bash && ros2 launch webots_spot agent_spot_launch.py; exec bash"
+    bash -c "source install/setup.bash && ros2 launch webots_spot agent_spot_launch.py"

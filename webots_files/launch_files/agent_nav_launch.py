@@ -12,11 +12,11 @@ def generate_launch_description():
     package_dir = get_package_share_directory("webots_spot")
     use_sim_time = LaunchConfiguration("use_sim_time", default=True)
 
-    nav2_map = os.path.join(package_dir, "map", "wzl_map.yaml")
+    nav2_map = "/maps/validation_sim_map.yaml"
     nav2_params = os.path.join(package_dir, "params", "nav2_params.yaml")
 
     use_rviz = LaunchConfiguration("rviz", default=True)
-    rviz_config = os.path.join(package_dir, "resource", "nav2.rviz")
+    rviz_config = "/config/sim_config.rviz"
     rviz = Node(
         package="rviz2",
         executable="rviz2",

@@ -542,7 +542,7 @@ class SpotDriver:
             odom.pose.pose.orientation.z = quat[2]
             odom.pose.pose.orientation.w = quat[3]
             odom.twist.twist.linear.x = translation_twist[0]
-            odom.twist.twist.linear.y = translation_twist[1]
+            odom.twist.twist.linear.y = -translation_twist[1]
             odom.twist.twist.linear.z = translation_twist[2]
             odom.twist.twist.angular.x = rotation_twist[0]
             odom.twist.twist.angular.y = rotation_twist[1]
