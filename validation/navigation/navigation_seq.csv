@@ -1,0 +1,35 @@
+interaction_id,user_query,tool_name,tool_args,nav2_status,nav_time_sec,distance_remaining,recoveries,error_msg
+
+2,execute navigation sequence.,get_sequence,{'seq_name': 'navigation'},,,,,
+2,execute navigation sequence.,move_to_goal,{'goal_location': 'station_1'},SUCCEEDED,9.050150827,0.27071067690849304,0.0,
+2,execute navigation sequence.,move_to_goal,{'goal_location': 'station_2'},SUCCEEDED,27.530108361,0.2828427255153656,1.0,
+2,execute navigation sequence.,move_to_goal,{'goal_location': 'operator'},SUCCEEDED,24.870123399,0.34142136573791504,1.0,
+2,execute navigation sequence.,move_to_goal,{'goal_location': 'home'},SUCCEEDED,54.050227681,0.0,4.0,
+
+
+3,execute navigation sequence.,get_sequence,{'seq_name': 'navigation'},,,,,
+3,execute navigation sequence.,move_to_goal,{'goal_location': 'station_1'},SUCCEEDED,11.780118392,0.22071067988872528,0.0,
+3,execute navigation sequence.,move_to_goal,{'goal_location': 'station_2'},SUCCEEDED,30.010143875,0.19142135977745056,1.0,
+3,execute navigation sequence.,move_to_goal,{'goal_location': 'operator'},SUCCEEDED,25.870148346,0.3121320307254791,1.0,
+3,execute navigation sequence.,move_to_goal,{'goal_location': 'home'},SUCCEEDED,65.220136155,0.12071067839860916,3.0,
+
+
+6,do navigation sequence.,get_sequence,{'seq_name': 'navigation'},,,,,
+6,do navigation sequence.,move_to_goal,{'goal_location': 'station_1'},SUCCEEDED,9.850147058,0.27071067690849304,0.0,
+6,do navigation sequence.,move_to_goal,{'goal_location': 'station_2'},SUCCEEDED,31.130135018,0.17071068286895752,1.0,
+6,do navigation sequence.,move_to_goal,{'goal_location': 'operator'},SUCCEEDED,28.670123777,0.24142135679721832,1.0,
+6,do navigation sequence.,move_to_goal,{'goal_location': 'home'},SUCCEEDED,57.540121237,0.24142135679721832,3.0,
+
+
+8,sequencia de navigation.,get_sequence,{'seq_name': 'navigation'},,,,,
+8,sequencia de navigation.,move_to_goal,{'goal_location': 'station_1'},SUCCEEDED,16.250145372,0.19142135977745056,0.0,
+8,sequencia de navigation.,move_to_goal,{'goal_location': 'station_2'},SUCCEEDED,45.450141499,0.19142135977745056,4.0,
+8,sequencia de navigation.,move_to_goal,{'goal_location': 'operator'},SUCCEEDED,25.810133389,0.3621320426464081,1.0,
+8,sequencia de navigation.,move_to_goal,{'goal_location': 'home'},SUCCEEDED,69.110140817,0.12071067839860916,4.0,
+
+
+9,faca a sequencia de passos navigation.,get_sequence,{'seq_name': 'navigation'},,,,,
+9,faca a sequencia de passos navigation.,move_to_goal,{'goal_location': 'station_1'},SUCCEEDED,10.910145206,0.27071067690849304,0.0,
+9,faca a sequencia de passos navigation.,move_to_goal,{'goal_location': 'station_2'},SUCCEEDED,28.430124403,0.17071068286895752,1.0,
+9,faca a sequencia de passos navigation.,move_to_goal,{'goal_location': 'operator'},SUCCEEDED,28.4701414,0.19142135977745056,1.0,
+9,faca a sequencia de passos navigation.,move_to_goal,{'goal_location': 'home'},SUCCEEDED,62.360157088,0.20000000298023224,4.0,

@@ -1,0 +1,52 @@
+source_file,interaction_id,user_query,tool_name,agent_feedback,tool_args
+navigation_manual_dyn.txt,1,go to station_1,move_to_goal,The robot has successfully moved to station_1. It took approximately 9.98 seconds to complete the navigation and covered a distance of about 0.25 meters. The robot had no issues or errors during the movement. Ready for next command.,{'goal_location': 'station_1'}
+navigation_manual_dyn.txt,2,go to station_2,move_to_goal,You have successfully moved to station_2. The robot took approximately 31 seconds to navigate there and covered a distance of about 21 cm with one recovery. Ready for next command.,{'goal_location': 'station_2'}
+navigation_manual_dyn.txt,3,go to operator,move_to_goal,The robot has moved to the operator location successfully. The navigation took approximately 30.2 seconds and the robot covered a distance of 0.2414 meters. It used 1 recovery to reach the goal location. Ready for next command.,{'goal_location': 'operator'}
+navigation_manual_dyn.txt,4,go home,move_to_goal,,{'goal_location': 'home'}
+navigation_manual_dyn.txt,5,go to station_1,move_to_goal,The robot has successfully moved to station_1. It took approximately 10 seconds and covered a distance of about 0.29 meters. The navigation was successful with no recoveries or errors.,{'goal_location': 'station_1'}
+navigation_manual_dyn.txt,6,go to station_2,move_to_goal,You have successfully moved to station_2. The navigation took approximately 31 seconds and covered a distance of about 26 centimeters. Ready for the next command.,{'goal_location': 'station_2'}
+navigation_manual_dyn.txt,7,go to operator,move_to_goal,You have arrived at the operator location. Ready for next command.,{'goal_location': 'operator'}
+navigation_manual_dyn.txt,8,go home,move_to_goal,"The robot has moved to the ""home"" location successfully. Ready for next command.",{'goal_location': 'home'}
+navigation_manual_dyn.txt,9,go to station_1,move_to_goal,You have successfully moved to station_1. The robot took approximately 9.18 seconds to navigate the distance. There were no recoveries or errors during the navigation. Ready for next command.,{'goal_location': 'station_1'}
+navigation_manual_dyn.txt,10,geh zu station_2,move_to_goal,You have successfully moved to station_2. Ready for next command.,{'goal_location': 'station_2'}
+navigation_manual_dyn.txt,11,jetzt geh zu dem Operator,move_to_goal,,{'goal_location': 'Operator'}
+navigation_manual_dyn.txt,11,jetzt geh zu dem Operator,ros2_node_list,,{'tool': 'ros2_node_list'}
+navigation_manual_dyn.txt,12,jetzt geh zu dem Operator,move_to_goal,,{'goal_location': 'Operator'}
+navigation_manual_dyn.txt,12,jetzt geh zu dem Operator,ros2_node_list,You are now in the Operator location. Ready for next command.,{'tool': 'ros2_node_list'}
+navigation_manual_dyn.txt,13,go to operator,turn_robot,The robot has successfully turned towards the operator. The turn was completed in approximately 31.79 seconds with a remaining distance of about 21.2 centimeters. There were four recoveries during navigation and no error messages were encountered.,{'angle_deg': 180}
+navigation_manual_dyn.txt,14,go to operator,turn_robot,You have turned the robot to face the operator. The navigation was successful and took approximately 11.67 seconds. The distance remaining to the goal is about 0.15 meters. There was one recovery during the navigation. No error messages were encountered. \n\nReady for next command.,{'angle_deg': 90}
+navigation_manual_dyn.txt,15,go to operator,move_to_goal,"The robot successfully moved to the ""operator"" location. It took approximately 16.58 seconds and covered a distance of about 0.24 meters remaining at the end of the navigation. The robot did not encounter any obstacles or issues during this move. Ready for next command.",{'goal_location': 'operator'}
+navigation_manual_dyn.txt,16,go heim,move_to_goal,walk_forward_robot(distance_m=2.0),{'goal_location': 'heim'}
+navigation_manual_dyn.txt,17,geh home,move_to_goal,"The robot has successfully moved to the location named ""home"". It took approximately 70 seconds and required 4 recoveries to navigate through the environment. The remaining distance was less than a centimeter. All actions were completed without any errors. Ready for next command.",{'goal_location': 'home'}
+
+
+
+
+navigation_seq_dyn.txt,1,faca a sequencia de passos navigation.,get_sequence,,{'seq_name': 'navigation'}
+navigation_seq_dyn.txt,1,faca a sequencia de passos navigation.,move_to_goal,,{'goal_location': 'station_1'}
+navigation_seq_dyn.txt,1,faca a sequencia de passos navigation.,move_to_goal,,{'goal_location': 'station_2'}
+navigation_seq_dyn.txt,1,faca a sequencia de passos navigation.,move_to_goal,,{'goal_location': 'operator'}
+navigation_seq_dyn.txt,1,faca a sequencia de passos navigation.,move_to_goal,You successfully executed the navigation sequence with 4 steps.\n\nReady for next command.,{'goal_location': 'home'}
+navigation_seq_dyn.txt,2,faca a sequencia de passos navigation.,get_sequence,,{'seq_name': 'passos_navigation'}
+navigation_seq_dyn.txt,3,do navigation steps.,move_to_goal,,{'goal_location': '<named location>'}
+navigation_seq_dyn.txt,3,do navigation steps.,ros2_node_list,"""Navigation nodes are running. Next command?""",{'tool_call': 'ros2_node_list()'}
+navigation_seq_dyn.txt,4,do navigation seq.,get_sequence,,{'seq_name': 'navigation'}
+navigation_seq_dyn.txt,4,do navigation seq.,move_to_goal,,{'goal_location': 'station_1'}
+navigation_seq_dyn.txt,4,do navigation seq.,move_to_goal,,{'goal_location': 'station_2'}
+navigation_seq_dyn.txt,4,do navigation seq.,move_to_goal,,{'goal_location': 'operator'}
+navigation_seq_dyn.txt,4,do navigation seq.,move_to_goal,"""Navigation sequence successfully completed.\n\nThe robot moved from station_1 to station_2 (4.22m), then to operator (1.72m), and finally back home (2.17m). \n\nAll movements were successful without any issues or errors.\nReady for next command.""",{'goal_location': 'home'}
+navigation_seq_dyn.txt,5,do navigation seq.,get_sequence,,{'seq_name': 'navigation'}
+navigation_seq_dyn.txt,5,do navigation seq.,move_to_goal,,{'goal_location': 'station_1'}
+navigation_seq_dyn.txt,5,do navigation seq.,move_to_goal,,{'goal_location': 'station_2'}
+navigation_seq_dyn.txt,5,do navigation seq.,move_to_goal,,{'goal_location': 'operator'}
+navigation_seq_dyn.txt,5,do navigation seq.,move_to_goal,,{'goal_location': 'home'}
+navigation_seq_dyn.txt,6,do navigation seq.,get_sequence,,{'seq_name': 'navigation'}
+navigation_seq_dyn.txt,6,do navigation seq.,move_to_goal,,{'goal_location': 'station_1'}
+navigation_seq_dyn.txt,6,do navigation seq.,move_to_goal,,{'goal_location': 'station_2'}
+navigation_seq_dyn.txt,6,do navigation seq.,move_to_goal,,{'goal_location': 'operator'}
+navigation_seq_dyn.txt,6,do navigation seq.,move_to_goal,"The navigation sequence has been completed successfully. The robot moved to station_1, then station_2, operator and finally home.",{'goal_location': 'home'}
+navigation_seq_dyn.txt,7,sequencia navigation,get_sequence,,{'seq_name': 'navigation'}
+navigation_seq_dyn.txt,7,sequencia navigation,move_to_goal,,{'goal_location': 'station_1'}
+navigation_seq_dyn.txt,7,sequencia navigation,move_to_goal,,{'goal_location': 'station_2'}
+navigation_seq_dyn.txt,7,sequencia navigation,move_to_goal,,{'goal_location': 'operator'}
+navigation_seq_dyn.txt,7,sequencia navigation,move_to_goal,"The ""navigation"" sequence has been completed successfully. The robot navigated to the specified locations, completing a total of 4 steps (including the get_sequence tool). Each step was executed with a different goal location. The navigation times ranged from approximately 16 seconds to around 69 seconds. The recoveries varied between 0 and 4, indicating that some steps required multiple attempts to reach their goals.",{'goal_location': 'home'}

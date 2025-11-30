@@ -1,0 +1,30 @@
+user_query,tool_called,tool_args,nav2_status,nav_time_sec,distance_remaining,recoveries,error_msg
+
+go to station_1,move_to_goal,{'goal_location': 'station_1'},SUCCEEDED,9.710126884,0.320710688829422,0.0,
+go to station_2,move_to_goal,{'goal_location': 'station_2'},SUCCEEDED,32.130140744,0.22071067988872528,1.0,
+move to operator,move_to_goal,{'goal_location': 'operator'},SUCCEEDED,30.27011036,0.19142135977745056,1.0,
+go home,move_to_goal,{'goal_location': 'home'},SUCCEEDED,48.21013878,0.22071067988872528,3.0,
+
+
+go to station_1,move_to_goal,{'goal_location': 'station_1'},SUCCEEDED,8.450143423,0.2914213538169861,0.0,
+you need to be in station_2,move_to_goal,{'goal_location': 'station_2'},SUCCEEDED,27.270150536,0.24142135679721832,1.0,
+you need to go to operator,move_to_goal,{'goal_location': 'operator'},SUCCEEDED,10.650140135000001,0.34142136573791504,0.0,
+move to home,move_to_goal,{'goal_location': 'home'},SUCCEEDED,53.67008378,0.27071067690849304,2.0,
+
+
+you are needed in station_1,move_to_goal,{'goal_location': 'station_1'},SUCCEEDED,8.580116137000001,0.30000001192092896,0.0,
+you are needed in station_2,move_to_goal,{'goal_location': 'station_2'},SUCCEEDED,28.400120599,0.22071067988872528,1.0,
+operator is looking for you!,move_to_goal,{'goal_location': 'operator'},SUCCEEDED,26.270126911,0.2914213538169861,1.0,
+You should be home!,move_to_goal,{'goal_location': 'home'},SUCCEEDED,73.600178622,0.2121320366859436,5.0,
+
+
+"station_1 is requesting you, go there",move_to_goal,{'goal_location': 'station_1'},SUCCEEDED,26.150134034,0.26213204860687256,1.0,
+move to station_2,move_to_goal,{'goal_location': 'station_2'},SUCCEEDED,29.800124212,0.24142135679721832,1.0,
+move to operator,move_to_goal,{'goal_location': 'operator'},SUCCEEDED,15.640170464,0.2121320366859436,0.0,
+time to go home,move_to_goal,{'goal_location': 'home'},SUCCEEDED,62.400102718,0.12071067839860916,3.0,
+
+
+move to station 1,move_to_goal,{'goal_location': 'station_1'},SUCCEEDED,13.180087101,0.24142135679721832,0.0,
+move to station 2,move_to_goal,{'goal_location': 'station 2'},SUCCEEDED,53.690136359,0.1414213627576828,3.0,
+move to operator,move_to_goal,{'goal_location': 'operator'},SUCCEEDED,30.070115433,0.17071068286895752,1.0,
+move to home,move_to_goal,{'goal_location': 'home'},SUCCEEDED,63.640106526,0.17071068286895752,5.0,

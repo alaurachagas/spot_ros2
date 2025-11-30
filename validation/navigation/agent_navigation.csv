@@ -1,0 +1,63 @@
+source_file,interaction_id,user_query,tool_name,agent_feedback,tool_args
+navigation_manual.txt,1,go to station_1,move_to_goal,The robot has moved to station_1 successfully. Ready for next command.,{'goal_location': 'station_1'}
+navigation_manual.txt,2,go to station_2,move_to_goal,You have successfully moved to station_2. Ready for the next command.,{'goal_location': 'station_2'}
+navigation_manual.txt,3,move to operator,move_to_goal,The robot has moved to the operator location successfully. The navigation took approximately 30 seconds.,{'goal_location': 'operator'}
+navigation_manual.txt,4,go home,move_to_goal,You have successfully moved the robot to its home location. The navigation took approximately 48 seconds and involved recovering from obstacles three times. The robot is now at home. Ready for next command.,{'goal_location': 'home'}
+navigation_manual.txt,5,go to station_1,move_to_goal,The robot has successfully moved to station_1. Ready for next command.,{'goal_location': 'station_1'}
+navigation_manual.txt,6,you need to be in station_2,move_to_goal,You have successfully moved to station_2. Ready for next command.,{'goal_location': 'station_2'}
+navigation_manual.txt,7,operator is looking for you,turn_robot,The robot has turned 180 degrees successfully. The navigation took approximately 43 seconds to complete. There were three recoveries made during the process. Ready for next command.,{'angle_deg': 180}
+navigation_manual.txt,8,you need to go to operator,move_to_goal,"The robot has successfully moved to the ""operator"" location. It took approximately 10.65 seconds and traveled a distance of about 34.14 cm. No recoveries were needed and no error messages were received. The robot is now at its destination. Ready for next command.",{'goal_location': 'operator'}
+navigation_manual.txt,9,move to home,move_to_goal,"The robot has moved to the ""home"" location successfully. The navigation took approximately 53 seconds and required two recoveries. The distance remaining was less than a meter when the goal was reached.",{'goal_location': 'home'}
+navigation_manual.txt,10,you are needed in station_1,move_to_goal,You have arrived at station_1. Ready for next command.,{'goal_location': 'station_1'}
+navigation_manual.txt,11,you are needed in station_2,move_to_goal,You have arrived at station_2. Ready for next command.,{'goal_location': 'station_2'}
+navigation_manual.txt,12,operator is looking for you!,move_to_goal,,{'goal_location': 'operator'}
+navigation_manual.txt,13,look at the time! You should be home by now!,ros2_node_list,,{'pattern': ''}
+navigation_manual.txt,14,look at the time! You should be home!,ros2_node_list,,{'pattern': '(^home$|^clock$)'}
+navigation_manual.txt,15,You should be home!,move_to_goal,,{'goal_location': 'home'}
+navigation_manual.txt,16,station_1 is requesting you,ros2_topic_list,The current ROS2 topics match the pattern /station_[0-9]+ but there are no matching topics.,{'pattern': '^/station_[0-9]+$'}
+navigation_manual.txt,17,"station_1 is requesting you, go there",move_to_goal,"You have successfully moved to station_1. The navigation time was approximately 26 seconds, and a total of one recovery was made. Ready for next command.",{'goal_location': 'station_1'}
+navigation_manual.txt,18,move to station_2,move_to_goal,The robot has successfully moved to station_2. Ready for next command.,{'goal_location': 'station_2'}
+navigation_manual.txt,19,go fetch the operator,turn_robot,,{'angle_deg': 90}
+navigation_manual.txt,20,to operator,ros2_topic_list,,{'pattern': '^/cmd$'}
+navigation_manual.txt,21,move to operator,move_to_goal,You have successfully moved to the operator location. Ready for next command.,{'goal_location': 'operator'}
+navigation_manual.txt,22,time to go home,move_to_goal,The robot has successfully moved to the home location. Ready for next command.,{'goal_location': 'home'}
+navigation_manual.txt,23,move to station 1,move_to_goal,The robot has successfully moved to station 1.,{'goal_location': 'station_1'}
+navigation_manual.txt,24,move to station 2,move_to_goal,,{'goal_location': 'station 2'}
+navigation_manual.txt,24,move to station 2,move_to_goal,The robot has moved to station 2 successfully. The navigation took 53.69 seconds and the distance remaining was less than a meter. There were 3 recoveries during navigation but no error message is available. Ready for next command.,{'args': {'goal_location': ''}
+navigation_manual.txt,25,move to station_2,move_to_goal,The robot has moved to station_2 successfully. It took approximately 27 seconds and required one recovery. The remaining distance was about 26 cm. Ready for next command.,{'goal_location': 'station_2'}
+navigation_manual.txt,26,move to operator,move_to_goal,,{'goal_location': 'operator'}
+navigation_manual.txt,27,move to home,move_to_goal,The robot has successfully moved to the home location. It took approximately 64 seconds and required 5 recoveries due to potential obstacles. The distance remaining was less than a meter when it finally arrived at home. Ready for next command.,{'goal_location': 'home'}
+
+
+
+navigation_seq.txt,1,save position as home,save_location_tool,"<|reserved_special_token_130|>Note: The location was saved using the save_location_tool function with the name ""home"".",{'name': 'home'}
+navigation_seq.txt,2,execute navigation sequence.,get_sequence,,{'seq_name': 'navigation'}
+navigation_seq.txt,2,execute navigation sequence.,move_to_goal,,{'goal_location': 'station_1'}
+navigation_seq.txt,2,execute navigation sequence.,move_to_goal,,{'goal_location': 'station_2'}
+navigation_seq.txt,2,execute navigation sequence.,move_to_goal,,{'goal_location': 'operator'}
+navigation_seq.txt,2,execute navigation sequence.,move_to_goal,The navigation sequence has been completed successfully. The robot has moved to each of the four saved locations without any errors. The total navigation time was approximately 114 seconds.,{'goal_location': 'home'}
+navigation_seq.txt,3,execute navigation sequence.,get_sequence,,{'seq_name': 'navigation'}
+navigation_seq.txt,3,execute navigation sequence.,move_to_goal,,{'goal_location': 'station_1'}
+navigation_seq.txt,3,execute navigation sequence.,move_to_goal,,{'goal_location': 'station_2'}
+navigation_seq.txt,3,execute navigation sequence.,move_to_goal,,{'goal_location': 'operator'}
+navigation_seq.txt,3,execute navigation sequence.,move_to_goal,"The navigation sequence was executed successfully. The robot moved to station_1 (11.78 seconds), then station_2 (30.01 seconds), followed by the operator location (25.87 seconds), and finally returned home (65.22 seconds). A total of 4 tool calls were made, with a total navigation time of 132.88 seconds.",{'goal_location': 'home'}
+navigation_seq.txt,4,do navigation.,move_to_goal,walk_forward_robot(distance_m=1.5),{'goal_location': 'default'}
+navigation_seq.txt,5,do navigation steps.,move_to_goal,,{'goal_location': 'navigation_step'}
+navigation_seq.txt,5,do navigation steps.,ros2_topic_list,"The current ROS2 topics are:\n\n""/arm_joint_commands""\n""/arm_pose_commands""\n""/arm_velocity_commands""\n""/behavior_server/transition_event""\n""/behavior_tree_log""\n""/body_pose""\n""/bond""\n""/bt_navigator/transition_event""\n""/camera/back/camera_info""\n""/camera/back/image""\n""/camera/frontleft/camera_info""\n""/camera/frontleft/image""\n""/camera/frontright/camera_info""\n""/camera/frontright/image""\n""/camera/hand/camera_info""\n""/camera/hand/image""\n""/camera/left/camera_info""\n""/camera/left/image""\n""/camera/right/camera_info""\n""/camera/right/image""\n""/clicked_point""\n""/cmd_vel""\n""/cmd_vel_nav""\n""/constraint_list""\n""/controller_server/transition_event""\n""/depth/back/camera_info""\n""/depth/back/image""\n""/depth/frontleft/camera_info""\n""/depth/frontleft/image""\n""/depth/frontright/camera_info""\n""/depth/frontright/image""\n""/depth/hand/camera_info""\n""/depth/hand/image""\n""/depth/left/camera_info""\n""/depth/left/image""\n""/depth/right/camera_info""\n""/depth/right/image""\n""/depth_registered/back/camera_info""\n""/depth_registered/back/image""\n""/depth_registered/frontleft/camera_info""\n""/depth_registered/frontleft/image""\n""/depth_registered/frontright/camera_info""\n""/depth_registered/frontright/image""\n""/depth_registered/hand/camera_info""\n""/depth_registered/hand/image""\n""/depth_registered/left/camera_info""\n""/depth_registered/left/image""\n""/depth_registered/right/camera_info""\n""/depth_registered/right/image""\n""/diagnostics""\n""/global_costmap/costmap""\n""/global_costmap/costmap_raw""\n""/global_costmap/costmap_updates""\n""/global_costmap/footprint""\n""/global_costmap/global_costmap/transition_event""\n""/global_costmap/published_footprint""\n""/goal_pose""\n""/initialpose""\n""/joint_states""\n""/landmark_poses_list""\n""/local_costmap/costmap""\n""/local_costmap/costmap_raw""\n""/local_costmap/costmap_updates""\n""/local_costmap/footprint""\n""/local_costmap/local_costmap/transition_event""\n""/local_costmap/published_footprint""\n""/lookahead_collision_arc""\n""/lookahead_point""\n""/manipulation_state""\n""/map""\n""/map_updates""\n""/odom""\n""/odometry""\n""/odometry/twist""\n""/parameter_events""\n""/plan""\n""/plan_smoothed""\n""/planner_server/transition_event""\n""/received_global_plan""\n""/robot_description""\n""/rosout""\n""/scan_matched_points2""\n""/smoother_server/transition_event""\n""/speed_limit""\n""/status/battery_states""\n""/status/behavior_faults""\n""/status/end_effector_force""\n""/status/estop""\n""/status/feedback""\n""/status/feet""\n""/status/leases""\n""/status/metrics""\n""/status/mobility_params""\n""/status/power_states""\n""/status/system_faults""\n""/status/wifi""\n""/submap_list""\n""/tf""\n""/tf_static""\n""/trajectory_node_list""\n""/transcription_text""\n""/unsmoothed_plan""\n""/velocity_smoother/transition_event""\n""/velodyne_packets""\n""/velodyne_points""\n""/velodyne_points_cartographer""\n""/velodyne_points_decoded""\n""/velodyne_points_encoded""\n""/waypoint_follower/transition_event""\n\nReady for next command.",{'tool_call': 'ros2_topic_list'}
+navigation_seq.txt,6,do navigation sequence.,get_sequence,,{'seq_name': 'navigation'}
+navigation_seq.txt,6,do navigation sequence.,move_to_goal,,{'goal_location': 'station_1'}
+navigation_seq.txt,6,do navigation sequence.,move_to_goal,,{'goal_location': 'station_2'}
+navigation_seq.txt,6,do navigation sequence.,move_to_goal,,{'goal_location': 'operator'}
+navigation_seq.txt,6,do navigation sequence.,move_to_goal,"The navigation sequence was completed successfully. The robot moved to station_1, then station_2, operator, and finally home. Each movement took around 9-60 seconds to complete. There were a total of 4 recoveries throughout the process due to various obstacles encountered. The final position of the robot is at its designated home location.",{'goal_location': 'home'}
+navigation_seq.txt,7,sequencia de navegacao.,get_sequence,,{'seq_name': 'sequencia de navegacao'}
+navigation_seq.txt,7,sequencia de navegacao.,ros2_node_list,,{'tool': 'ros2_node_list'}
+navigation_seq.txt,8,sequencia de navigation.,get_sequence,,{'seq_name': 'navigation'}
+navigation_seq.txt,8,sequencia de navigation.,move_to_goal,,{'goal_location': 'station_1'}
+navigation_seq.txt,8,sequencia de navigation.,move_to_goal,,{'goal_location': 'station_2'}
+navigation_seq.txt,8,sequencia de navigation.,move_to_goal,,{'goal_location': 'operator'}
+navigation_seq.txt,8,sequencia de navigation.,move_to_goal,,{'goal_location': 'home'}
+navigation_seq.txt,9,faca a sequencia de passos navigation.,get_sequence,,{'seq_name': 'navigation'}
+navigation_seq.txt,9,faca a sequencia de passos navigation.,move_to_goal,,{'goal_location': 'station_1'}
+navigation_seq.txt,9,faca a sequencia de passos navigation.,move_to_goal,,{'goal_location': 'station_2'}
+navigation_seq.txt,9,faca a sequencia de passos navigation.,move_to_goal,,{'goal_location': 'operator'}
+navigation_seq.txt,9,faca a sequencia de passos navigation.,move_to_goal,"""Executed the \'navigation\' sequence successfully.\nNavigated to station_1 (10.9s), station_2 (28.43s), operator (28.47s), and home (62.36s).\nTotal navigation time: 129.76 seconds\nReady for next command.""",{'goal_location': 'home'}
