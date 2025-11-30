@@ -16,4 +16,4 @@ docker run \
     -v "$REPO_ROOT/config:/config" \
     --name spot_description \
     spot-description-ros:main \
-    bash -c "bash /description_entry.sh; exec bash"
+    bash -c "bash /description_entry.sh"

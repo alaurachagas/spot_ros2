@@ -14,6 +14,7 @@ docker run \
     --env="DISPLAY" \
     -v "$HOME/.Xauthority:/root/.Xauthority:rw" \
     -v "$REPO_ROOT/map:/map" \
+    -v "$REPO_ROOT/entrypoint_scripts/save_map.sh:/save_map.sh" \
     --name cartographer \
     cartographer-ros:main \
     bash -c "source install/setup.bash && ros2 launch spot_cartographer sim_spot.launch.py; exec bash"

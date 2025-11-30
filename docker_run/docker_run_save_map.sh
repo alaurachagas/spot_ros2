@@ -1,1 +1,1 @@
-docker exec -it cartographer bash -c "bash /save_map.sh; exec bash"
+docker exec -it cartographer bash -c "bash /save_map.sh"
