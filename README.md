@@ -67,9 +67,9 @@ The remaining submodules were developed by external teams, and <tell how importa
 
 <picture>
   <!-- Dark mode image -->
-  <source media="(prefers-color-scheme: dark)" srcset="dark_Spot_agent_structure.svg">
+  <source media="(prefers-color-scheme: dark)" srcset="images_readme/dark_Spot_agent_structure.svg">
   <!-- Light mode image -->
-  <source media="(prefers-color-scheme: light)" srcset="light_Spot_agent_structure.svg">
+  <source media="(prefers-color-scheme: light)" srcset="images_readme/light_Spot_agent_structure.svg">
   <!-- Fallback (if the browser doesn’t support the media query) -->
   <img alt="Spot agent architecture overview" src="light_Spot_agent_structure.svg">
 </picture>
