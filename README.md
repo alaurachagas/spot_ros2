@@ -10,7 +10,10 @@ Below you will find a full explanation of the components in this repository and 
 [1. General REPO Organization](#1-general-repo-organization) \
 [1.1. Submodules: Brief Overview](#11-submodules-brief-overview) \
 [2. Prerequisites for Running the REPO](#2-prerequisites-for-running-the-repo) \
-[3. ](#3)
+[2.1. Installing Depedencies](#21-installing-depedencies) \
+[3. Running this Demo - Quick Start](#3-running-this-demo---quick-start) \
+[3.1 Setting up *Real Robot*](#31-setting-up-real-robot) \
+[3.2 Setting up *Simulation*](#32-setting-up-simulation)
 
 # 1. General REPO Organization
 
@@ -49,6 +52,15 @@ In addition to these, there are four folders with configuration files:
 
 ## 1.1. Submodules: Brief Overview
 
+<picture>
+  <!-- Dark mode image -->
+  <source media="(prefers-color-scheme: dark)" srcset="images_readme/dark_Spot_agent_structure.svg">
+  <!-- Light mode image -->
+  <source media="(prefers-color-scheme: light)" srcset="images_readme/light_Spot_agent_structure.svg">
+  <!-- Fallback (if the browser doesn’t support the media query) -->
+  <img alt="Spot agent architecture overview" src="light_Spot_agent_structure.svg">
+</picture>
+
 This repository makes use of 9 submodules in total. The main submodules, and the ones developed during the Thesis are:
 
 - [***ai_agent_spot***](colcon_ws/src/ai_agent_spot) is the full Embodied-AI agent development. It is stuctured as a ROS 2 package, and was built using LangChain v1.0.0.
@@ -65,22 +77,77 @@ The remaining submodules were developed by external teams, and <tell how importa
 
 - Finally [***webots_ros2_spot***](colcon_ws/src/webots_ros2_spot/) is a ROS 2 package that has the full configuration to run Spot with a Velodyne LiDAR in the simulation environment of Webots.
 
-<picture>
-  <!-- Dark mode image -->
-  <source media="(prefers-color-scheme: dark)" srcset="images_readme/dark_Spot_agent_structure.svg">
-  <!-- Light mode image -->
-  <source media="(prefers-color-scheme: light)" srcset="images_readme/light_Spot_agent_structure.svg">
-  <!-- Fallback (if the browser doesn’t support the media query) -->
-  <img alt="Spot agent architecture overview" src="light_Spot_agent_structure.svg">
-</picture>
-
-# 2. Prerequisites for Running the REPO
+# 2. Depedencies for Running the REPO
 
 - Linux or Windows+WSL2 Ubuntu. (for the bash scripts)
 - Docker
-- ROS 2 Humble
-- RMW Zenoh (See section x.x.)
+<!-- - ROS 2 Humble
+- RMW Zenoh -->
 
-# 3. Quick start
+## 2.1. Installing Depedencies
+
+This section is just relevant for those that never worked with one of the REPO's dependencies. Here, one by one, the dependecies will be explained and the link for the official instalation guides will be provided.
+
+### 2.1.1 WSL2 Ubuntu (for Windows users)
+
+This repository was created in a Ubuntu PC. If you are a Windows user, and wants to run this demo, unfortunally you will need to go through some trouble first. To be able to do even the first step of the [Demo Quick Start](#3-demo-quick-start) (the Docke setup) you will need to be able to execute *.bash* scripts, which is not possible in Windows. So you will need to setup a Ubuntu environment in your computer. To do so, I recomend installing:
+
+- **WSL2 Ubuntu:** To do the instalation, follow the steps from the official Ubuntu documentation [here](https://documentation.ubuntu.com/wsl/stable/howto/install-ubuntu-wsl2/). The version of Ubuntu you need to install is Ubuntu 22.04 LTS.
+
+### 2.1.2 Docker
+
+Docker is the main resorce used in this repo. All of the components in this repo are containerized to make it modular and easier to setup. But first, if you never worked with Docker, it is necessary to install it in your machine.
+
+- **Docker:** To do the instalation, follow the steps from the official Docker documentation [here](https://docs.docker.com/engine/install/ubuntu/).
+
+<!-- ### 2.1.3. ROS 2 Humble
+
+[here](https://docs.ros.org/en/humble/Installation.html)
+
+### 2.1.4. ROS 2 Middleware (RMW) Zenoh
+
+[here](https://docs.ros.org/en/humble/Installation/RMW-Implementations/Non-DDS-Implementations/Working-with-Zenoh.html) -->
+
+# 3. Running this Demo - Quick Start
+
+First things first, to run this demo, you need to clone the repo:
+
+```sh
+git clone --recursive-submodules https://github.com/alaurachagas/spot_ros2.git .
+cd spot_ros2
+```
+
+Then using Docker, build all the docker images.
+
+Common images for **both use cases**:
+```sh
+bash docker_build/docker_build_agent.sh
+```
+```sh
+bash docker_build/docker_build_carto.sh
+```
+
+Images for **Real Robot only**:
+```sh
+bash docker_build/docker_build_nav2.sh
+```
+```sh
+bash docker_build/docker_build_spot.sh
+```
+```sh
+bash docker_build/docker_build_velo.sh
+```
+```sh
+bash docker_build/docker_build_description.sh
+```
+
+Images for **Simulation only**:
+```sh
+bash docker_build/docker_build_webots.sh
+```
+
+## 3.1 Setting up *Real Robot*
 
 
+
+## 3.2 Setting up *Simulation*
